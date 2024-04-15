@@ -22,12 +22,14 @@ public class TodoEntity extends AuditedEntity {
         this.todo = todo;
     }
 
-    public TodoEntity(LocalDateTime createdAt,
-                      LocalDateTime updatedAt,
-                      String createdBy,
-                      String modifiedBy,
-                      String todo) {
+    public TodoEntity(Long id,
+                String todo,
+                LocalDateTime createdAt,
+                LocalDateTime updatedAt,
+                Long createdBy,
+                Long modifiedBy) {
         super(createdAt, updatedAt, createdBy, modifiedBy);
+        this.id = id;
         this.todo = todo;
     }
 

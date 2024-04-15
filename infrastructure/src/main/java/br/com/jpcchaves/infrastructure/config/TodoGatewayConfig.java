@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TodoGatewayConfig {
     @Bean
-    private CreateTodoUseCase createTodo(CreateTodoGatewayImpl createTodoGatewayImpl) {
+    public CreateTodoUseCase createTodo(CreateTodoGatewayImpl createTodoGatewayImpl) {
         return new CreateTodoUseCaseImpl(createTodoGatewayImpl);
     }
 }

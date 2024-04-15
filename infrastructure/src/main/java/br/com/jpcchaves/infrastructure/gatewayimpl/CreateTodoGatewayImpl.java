@@ -2,6 +2,7 @@ package br.com.jpcchaves.infrastructure.gatewayimpl;
 
 import br.com.jpcchaves.application.gateway.CreateTodoGateway;
 import br.com.jpcchaves.core.domain.Todo;
+import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,16 @@ public class CreateTodoGatewayImpl implements CreateTodoGateway {
 
     @Override
     public Todo create(Todo todo) {
-        return todoRepository.save(todo);
+        TodoEntity createdTodo =
+                todoRepository
+                        .save(new TodoEntity(todo.getId(),
+                                todo.getTodo(), todo.getCreatedAt(),
+                                todo.getUpdatedAt(), todo.getCreatedBy(),
+                                todo.getModifiedBy()));
+
+        return new Todo(createdTodo.getId(),
+                createdTodo.getTodo(), createdTodo.getCreatedAt(),
+                createdTodo.getUpdatedAt(), createdTodo.getCreatedBy(),
+                createdTodo.getModifiedBy());
     }
 }

@@ -20,18 +20,18 @@ public abstract class AuditedEntity  {
     private LocalDateTime updatedAt;
 
     @CreatedBy
-    private String createdBy;
+    private Long createdBy;
 
     @LastModifiedBy
-    private String modifiedBy;
+    private Long modifiedBy;
 
     public AuditedEntity() {
     }
 
     public AuditedEntity(LocalDateTime createdAt,
                          LocalDateTime updatedAt,
-                         String createdBy,
-                         String modifiedBy) {
+                         Long createdBy,
+                         Long modifiedBy) {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.createdBy = createdBy;
@@ -54,19 +54,19 @@ public abstract class AuditedEntity  {
         this.updatedAt = updatedAt;
     }
 
-    public String getCreatedBy() {
+    public Long getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(Long createdBy) {
         this.createdBy = createdBy;
     }
 
-    public String getModifiedBy() {
+    public Long getModifiedBy() {
         return modifiedBy;
     }
 
-    public void setModifiedBy(String modifiedBy) {
+    public void setModifiedBy(Long modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
 }

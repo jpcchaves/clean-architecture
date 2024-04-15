@@ -1,6 +1,7 @@
 package br.com.jpcchaves.infrastructure.controller;
 
 import br.com.jpcchaves.core.domain.Todo;
+import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.service.TodoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class TodoController {
     }
 
     @PostMapping
-    public ResponseEntity<Todo> create(@RequestBody Todo todo) {
+    public ResponseEntity<TodoEntity> create(@RequestBody Todo todo) {
         return ResponseEntity.status(HttpStatus.OK).body(todoService.create(todo));
     }
 }

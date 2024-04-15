@@ -16,12 +16,12 @@ public class Todo extends Audited {
         this.todo = todo;
     }
 
-    public Todo(LocalDateTime createdAt,
+    public Todo(Long id,
+                String todo,
+                LocalDateTime createdAt,
                 LocalDateTime updatedAt,
                 Long createdBy,
-                Long modifiedBy,
-                Long id,
-                String todo) {
+                Long modifiedBy) {
         super(createdAt, updatedAt, createdBy, modifiedBy);
         this.id = id;
         this.todo = todo;
