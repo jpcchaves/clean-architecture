@@ -2,6 +2,8 @@ package br.com.jpcchaves.usecase;
 
 import br.com.jpcchaves.core.domain.Todo;
 
+import java.util.List;
+
 public interface ListTodoUseCase {
-    PaginationResponse<Todo> list();
+    List<Todo> list();
 }
