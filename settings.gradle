@@ -1,0 +1,10 @@
+rootProject.name = 'todoca'
+include 'infrastructure'
+include 'core'
+include 'application'
+include 'usecase'
+include 'application'
+include 'core'
+include 'infrastructure'
+include 'usecase'
+
