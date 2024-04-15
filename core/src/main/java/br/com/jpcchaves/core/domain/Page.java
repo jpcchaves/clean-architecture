@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface Page<T> {
     List<T> getContent();
-    int getPageNumber();
-    int getPageSize();
-    long getTotalElements();
-    int getTotalPages();
-    boolean hasNext();
-    boolean hasPrevious();
-    boolean isLast();
+    Integer getPageNumber();
+    Integer getPageSize();
+    Long getTotalElements();
+    Integer getTotalPages();
+    Boolean hasNext();
+    Boolean hasPrevious();
+    Boolean isLast();
 }
