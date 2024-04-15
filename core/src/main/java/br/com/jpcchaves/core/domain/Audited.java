@@ -2,19 +2,19 @@ package br.com.jpcchaves.core.domain;
 
 import java.time.LocalDateTime;
 
-public abstract class AuditedEntity {
+public abstract class Audited {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private Long createdBy;
     private Long modifiedBy;
 
-    public AuditedEntity() {
+    public Audited() {
     }
 
-    public AuditedEntity(LocalDateTime createdAt,
-                         LocalDateTime updatedAt,
-                         Long createdBy,
-                         Long modifiedBy) {
+    public Audited(LocalDateTime createdAt,
+                   LocalDateTime updatedAt,
+                   Long createdBy,
+                   Long modifiedBy) {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.createdBy = createdBy;
