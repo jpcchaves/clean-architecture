@@ -10,4 +10,5 @@ public interface Page<T> {
     int getTotalPages();
     boolean hasNext();
     boolean hasPrevious();
+    boolean isLast();
 }
