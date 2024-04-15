@@ -3,7 +3,7 @@ package br.com.jpcchaves.core.domain;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Todo extends AuditedEntity {
+public class Todo extends Audited {
     private Long id;
     private String todo;
 
