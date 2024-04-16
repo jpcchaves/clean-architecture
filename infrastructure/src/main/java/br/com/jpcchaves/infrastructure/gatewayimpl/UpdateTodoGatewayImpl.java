@@ -4,6 +4,7 @@ import br.com.jpcchaves.application.gateway.UpdateTodoGateway;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.core.exception.enums.ErrorCode;
+import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
 import org.springframework.stereotype.Component;
@@ -11,9 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class UpdateTodoGatewayImpl implements UpdateTodoGateway {
     private final TodoRepository todoRepository;
+    private final TodoMapper todoMapper;
 
-    public UpdateTodoGatewayImpl(TodoRepository todoRepository) {
+    public UpdateTodoGatewayImpl(TodoRepository todoRepository,
+                                 TodoMapper todoMapper) {
         this.todoRepository = todoRepository;
+        this.todoMapper = todoMapper;
     }
 
     @Override
@@ -27,13 +31,6 @@ public class UpdateTodoGatewayImpl implements UpdateTodoGateway {
 
         TodoEntity updatedTodo = todoRepository.save(todoEntity);
 
-        return new Todo(
-                updatedTodo.getId(),
-                updatedTodo.getTodo(),
-                updatedTodo.getCreatedAt(),
-                updatedTodo.getUpdatedAt(),
-                updatedTodo.getCreatedBy(),
-                updatedTodo.getModifiedBy()
-        );
+        return todoMapper.toTodo(updatedTodo);
     }
 }
