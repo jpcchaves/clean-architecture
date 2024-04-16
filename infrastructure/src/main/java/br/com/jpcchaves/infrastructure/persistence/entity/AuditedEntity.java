@@ -1,11 +1,28 @@
-package br.com.jpcchaves.core.domain;
+package br.com.jpcchaves.infrastructure.persistence.entity;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.MappedSuperclass;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
-public abstract class AuditedEntity {
+@MappedSuperclass
+public abstract class AuditedEntity  {
+    @CreatedDate
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime updatedAt;
+
+    @CreatedBy
     private Long createdBy;
+
+    @LastModifiedBy
     private Long modifiedBy;
 
     public AuditedEntity() {

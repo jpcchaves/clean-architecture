@@ -1,7 +1,7 @@
 package br.com.jpcchaves.core.exception.enums;
 
 public enum ErrorCode {
-    TD0001("TODO not found", "TD-0001");
+    TD0001("TODO not found with the given ID", "TD-0001");
 
     private String message;
     private String code;

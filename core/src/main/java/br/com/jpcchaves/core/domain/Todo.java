@@ -3,7 +3,7 @@ package br.com.jpcchaves.core.domain;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Todo extends AuditedEntity {
+public class Todo extends Audited {
     private Long id;
     private String todo;
 
@@ -16,12 +16,12 @@ public class Todo extends AuditedEntity {
         this.todo = todo;
     }
 
-    public Todo(LocalDateTime createdAt,
+    public Todo(Long id,
+                String todo,
+                LocalDateTime createdAt,
                 LocalDateTime updatedAt,
                 Long createdBy,
-                Long modifiedBy,
-                Long id,
-                String todo) {
+                Long modifiedBy) {
         super(createdAt, updatedAt, createdBy, modifiedBy);
         this.id = id;
         this.todo = todo;
