@@ -11,4 +11,6 @@ public interface TodoService {
     List<TodoEntity> list();
 
     TodoEntity getById(Long id);
+
+    void delete(Long id);
 }

@@ -3,6 +3,7 @@ package br.com.jpcchaves.infrastructure.service;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.usecase.CreateTodoUseCase;
+import br.com.jpcchaves.usecase.DeleteTodoUseCase;
 import br.com.jpcchaves.usecase.GetTodoByIdUseCase;
 import br.com.jpcchaves.usecase.ListTodoUseCase;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,16 @@ public class TodoServiceImpl implements TodoService {
     private final CreateTodoUseCase createTodoUseCase;
     private final ListTodoUseCase listTodoUseCase;
     private final GetTodoByIdUseCase getTodoByIdUseCase;
+    private final DeleteTodoUseCase deleteTodoUseCase;
 
     public TodoServiceImpl(CreateTodoUseCase createTodoUseCase,
                            ListTodoUseCase listTodoUseCase,
-                           GetTodoByIdUseCase getTodoByIdUseCase) {
+                           GetTodoByIdUseCase getTodoByIdUseCase,
+                           DeleteTodoUseCase deleteTodoUseCase) {
         this.createTodoUseCase = createTodoUseCase;
         this.listTodoUseCase = listTodoUseCase;
         this.getTodoByIdUseCase = getTodoByIdUseCase;
+        this.deleteTodoUseCase = deleteTodoUseCase;
     }
 
     @Override
@@ -53,7 +57,7 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public TodoEntity getById(Long id) {
         Todo todo = getTodoByIdUseCase.getById(id);
-        
+
         return new TodoEntity(
                 todo.getId(),
                 todo.getTodo(),
@@ -62,5 +66,10 @@ public class TodoServiceImpl implements TodoService {
                 todo.getCreatedBy(),
                 todo.getModifiedBy()
         );
+    }
+
+    @Override
+    public void delete(Long id) {
+        deleteTodoUseCase.delete(id);
     }
 }
