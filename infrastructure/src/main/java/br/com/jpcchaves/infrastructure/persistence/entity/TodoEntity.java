@@ -1,11 +1,13 @@
 package br.com.jpcchaves.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "todos")
+@EntityListeners(AuditingEntityListener.class)
 public class TodoEntity extends AuditedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
