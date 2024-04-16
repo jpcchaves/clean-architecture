@@ -3,6 +3,7 @@ package br.com.jpcchaves.infrastructure.service;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.usecase.CreateTodoUseCase;
+import br.com.jpcchaves.usecase.GetTodoByIdUseCase;
 import br.com.jpcchaves.usecase.ListTodoUseCase;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,14 @@ import java.util.stream.Collectors;
 public class TodoServiceImpl implements TodoService {
     private final CreateTodoUseCase createTodoUseCase;
     private final ListTodoUseCase listTodoUseCase;
+    private final GetTodoByIdUseCase getTodoByIdUseCase;
 
     public TodoServiceImpl(CreateTodoUseCase createTodoUseCase,
-                           ListTodoUseCase listTodoUseCase) {
+                           ListTodoUseCase listTodoUseCase,
+                           GetTodoByIdUseCase getTodoByIdUseCase) {
         this.createTodoUseCase = createTodoUseCase;
         this.listTodoUseCase = listTodoUseCase;
+        this.getTodoByIdUseCase = getTodoByIdUseCase;
     }
 
     @Override
@@ -44,5 +48,19 @@ public class TodoServiceImpl implements TodoService {
                         todo.getModifiedBy()
                 ))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public TodoEntity getById(Long id) {
+        Todo todo = getTodoByIdUseCase.getById(id);
+        
+        return new TodoEntity(
+                todo.getId(),
+                todo.getTodo(),
+                todo.getCreatedAt(),
+                todo.getUpdatedAt(),
+                todo.getCreatedBy(),
+                todo.getModifiedBy()
+        );
     }
 }
