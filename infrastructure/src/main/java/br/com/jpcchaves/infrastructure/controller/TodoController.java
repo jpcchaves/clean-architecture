@@ -1,6 +1,5 @@
 package br.com.jpcchaves.infrastructure.controller;
 
-import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.service.TodoService;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,7 @@ public class TodoController {
     }
 
     @PostMapping
-    public ResponseEntity<TodoEntity> create(@RequestBody Todo todo) {
+    public ResponseEntity<TodoEntity> create(@RequestBody TodoEntity todo) {
         return ResponseEntity.status(HttpStatus.OK).body(todoService.create(todo));
     }
 
@@ -33,10 +32,15 @@ public class TodoController {
         return ResponseEntity.ok(todoService.getById(id));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") Long id) {
         todoService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<TodoEntity> update(@PathVariable(name = "id") Long id,
+                                             @RequestBody TodoEntity todoEntity) {
+        return ResponseEntity.ok(todoService.update(id, todoEntity));
+    }
 }

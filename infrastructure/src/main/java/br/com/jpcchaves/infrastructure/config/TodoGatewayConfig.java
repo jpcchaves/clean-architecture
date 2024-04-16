@@ -1,17 +1,8 @@
 package br.com.jpcchaves.infrastructure.config;
 
-import br.com.jpcchaves.application.usecaseimpl.CreateTodoUseCaseImpl;
-import br.com.jpcchaves.application.usecaseimpl.DeleteTodoUseCaseImpl;
-import br.com.jpcchaves.application.usecaseimpl.GetTodoByIdUseCaseImpl;
-import br.com.jpcchaves.application.usecaseimpl.ListTodoUseCaseImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.CreateTodoGatewayImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.DeleteTodoGatewayImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.GetTodoByIdGatewayImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.ListTodoGatewayImpl;
-import br.com.jpcchaves.usecase.CreateTodoUseCase;
-import br.com.jpcchaves.usecase.DeleteTodoUseCase;
-import br.com.jpcchaves.usecase.GetTodoByIdUseCase;
-import br.com.jpcchaves.usecase.ListTodoUseCase;
+import br.com.jpcchaves.application.usecaseimpl.*;
+import br.com.jpcchaves.infrastructure.gatewayimpl.*;
+import br.com.jpcchaves.usecase.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -35,5 +26,10 @@ public class TodoGatewayConfig {
     @Bean
     public DeleteTodoUseCase delete(DeleteTodoGatewayImpl deleteTodoGatewayImpl) {
         return new DeleteTodoUseCaseImpl(deleteTodoGatewayImpl);
+    }
+
+    @Bean
+    UpdateTodoUseCase update(UpdateTodoGatewayImpl updateTodoGatewayImpl) {
+        return new UpdateTodoUseCaseImpl(updateTodoGatewayImpl);
     }
 }
