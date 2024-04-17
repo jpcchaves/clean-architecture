@@ -9,20 +9,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class DeleteTodoGatewayImpl implements DeleteTodoGateway {
-    private final TodoRepository todoRepository;
+  private final TodoRepository todoRepository;
 
-    public DeleteTodoGatewayImpl(TodoRepository todoRepository) {
-        this.todoRepository = todoRepository;
+  public DeleteTodoGatewayImpl(TodoRepository todoRepository) {
+    this.todoRepository = todoRepository;
+  }
+
+  @Override
+  @Transactional
+  public void delete(Long id) {
+    if (!todoRepository.existsById(id)) {
+      throw new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode());
     }
 
-    @Override
-    @Transactional
-    public void delete(Long id) {
-        if (!todoRepository.existsById(id)) {
-            throw new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode());
-        }
-
-
-        todoRepository.deleteById(id);
-    }
+    todoRepository.deleteById(id);
+  }
 }

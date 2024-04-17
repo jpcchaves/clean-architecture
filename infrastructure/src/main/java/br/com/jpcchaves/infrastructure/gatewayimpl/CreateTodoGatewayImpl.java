@@ -10,20 +10,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class CreateTodoGatewayImpl implements CreateTodoGateway {
-    private final TodoRepository todoRepository;
-    private final TodoMapper todoMapper;
+  private final TodoRepository todoRepository;
+  private final TodoMapper todoMapper;
 
-    public CreateTodoGatewayImpl(TodoRepository todoRepository,
-                                 TodoMapper todoMapper) {
-        this.todoRepository = todoRepository;
-        this.todoMapper = todoMapper;
-    }
+  public CreateTodoGatewayImpl(TodoRepository todoRepository, TodoMapper todoMapper) {
+    this.todoRepository = todoRepository;
+    this.todoMapper = todoMapper;
+  }
 
-    @Override
-    @Transactional
-    public Todo create(Todo todo) {
-        TodoEntity createdTodo = todoRepository.save(todoMapper.toTodoEntity(todo));
+  @Override
+  @Transactional
+  public Todo create(Todo todo) {
+    TodoEntity createdTodo = todoRepository.save(todoMapper.toTodoEntity(todo));
 
-        return todoMapper.toTodo(createdTodo);
-    }
+    return todoMapper.toTodo(createdTodo);
+  }
 }

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MapperConfig {
 
-    @Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
-    }
+  @Bean
+  public ModelMapper modelMapper() {
+    return new ModelMapper();
+  }
 }

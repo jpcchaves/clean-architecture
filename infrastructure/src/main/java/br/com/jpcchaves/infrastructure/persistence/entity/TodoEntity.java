@@ -1,53 +1,52 @@
 package br.com.jpcchaves.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import java.time.LocalDateTime;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "todos")
 @EntityListeners(AuditingEntityListener.class)
 public class TodoEntity extends AuditedEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(nullable = false)
-    private String todo;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-    public TodoEntity() {
-    }
+  @Column(nullable = false)
+  private String todo;
 
-    public TodoEntity(Long id,
-                      String todo) {
-        this.id = id;
-        this.todo = todo;
-    }
+  public TodoEntity() {}
 
-    public TodoEntity(Long id,
-                String todo,
-                LocalDateTime createdAt,
-                LocalDateTime updatedAt,
-                Long createdBy,
-                Long modifiedBy) {
-        super(createdAt, updatedAt, createdBy, modifiedBy);
-        this.id = id;
-        this.todo = todo;
-    }
+  public TodoEntity(Long id, String todo) {
+    this.id = id;
+    this.todo = todo;
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public TodoEntity(
+      Long id,
+      String todo,
+      LocalDateTime createdAt,
+      LocalDateTime updatedAt,
+      Long createdBy,
+      Long modifiedBy) {
+    super(createdAt, updatedAt, createdBy, modifiedBy);
+    this.id = id;
+    this.todo = todo;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getTodo() {
-        return todo;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setTodo(String todo) {
-        this.todo = todo;
-    }
+  public String getTodo() {
+    return todo;
+  }
+
+  public void setTodo(String todo) {
+    this.todo = todo;
+  }
 }
