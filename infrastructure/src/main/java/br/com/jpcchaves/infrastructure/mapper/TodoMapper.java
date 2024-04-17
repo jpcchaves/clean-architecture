@@ -1,6 +1,8 @@
 package br.com.jpcchaves.infrastructure.mapper;
 
 import br.com.jpcchaves.core.domain.Todo;
+import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.utils.MapperUtils;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,10 @@ public class TodoMapper {
         return mapperUtils.parseObject(todoEntity, Todo.class);
     }
 
+    public Todo toTodo(TodoRequestDTO todoDTO) {
+        return mapperUtils.parseObject(todoDTO, Todo.class);
+    }
+
     public TodoEntity toTodoEntity(Todo todo) {
         return mapperUtils.parseObject(todo, TodoEntity.class);
     }
@@ -29,5 +35,17 @@ public class TodoMapper {
 
     public List<TodoEntity> toTodoEntityList(List<Todo> todos) {
         return mapperUtils.parseObjectsCollection(todos, TodoEntity.class);
+    }
+
+    public TodoResponseDTO toResponseDTO(TodoEntity todoEntity) {
+        return mapperUtils.parseObject(todoEntity, TodoResponseDTO.class);
+    }
+
+    public TodoResponseDTO toResponseDTO(Todo todo) {
+        return mapperUtils.parseObject(todo, TodoResponseDTO.class);
+    }
+
+    public List<TodoResponseDTO> toResponseDTOList(List<Todo> todoList) {
+        return mapperUtils.parseObjectsCollection(todoList, TodoResponseDTO.class);
     }
 }

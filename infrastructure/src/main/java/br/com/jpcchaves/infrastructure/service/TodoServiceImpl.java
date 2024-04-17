@@ -1,8 +1,9 @@
 package br.com.jpcchaves.infrastructure.service;
 
 import br.com.jpcchaves.core.domain.Todo;
+import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
-import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.usecase.*;
 import org.springframework.stereotype.Service;
 
@@ -32,23 +33,23 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public TodoEntity create(TodoEntity todo) {
+    public TodoResponseDTO create(TodoRequestDTO todo) {
 
         Todo createdTodo = createTodoUseCase.create(todoMapper.toTodo(todo));
 
-        return todoMapper.toTodoEntity(createdTodo);
+        return todoMapper.toResponseDTO(createdTodo);
     }
 
     @Override
-    public List<TodoEntity> list() {
-        return todoMapper.toTodoEntityList(listTodoUseCase.list());
+    public List<TodoResponseDTO> list() {
+        return todoMapper.toResponseDTOList(listTodoUseCase.list());
     }
 
     @Override
-    public TodoEntity getById(Long id) {
+    public TodoResponseDTO getById(Long id) {
         Todo todo = getTodoByIdUseCase.getById(id);
 
-        return todoMapper.toTodoEntity(todo);
+        return todoMapper.toResponseDTO(todo);
     }
 
     @Override
@@ -57,10 +58,10 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public TodoEntity update(Long id,
-                             TodoEntity todoEntity) {
+    public TodoResponseDTO update(Long id,
+                                  TodoRequestDTO todoEntity) {
         Todo updatedTodo = updateTodoUseCase.update(id, todoMapper.toTodo(todoEntity));
 
-        return todoMapper.toTodoEntity(updatedTodo);
+        return todoMapper.toResponseDTO(updatedTodo);
     }
 }
