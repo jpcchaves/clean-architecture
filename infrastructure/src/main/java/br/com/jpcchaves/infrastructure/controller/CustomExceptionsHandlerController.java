@@ -1,5 +1,6 @@
 package br.com.jpcchaves.infrastructure.controller;
 
+import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.infrastructure.dto.ExceptionResponseDTO;
 import java.util.Date;
 import java.util.logging.Logger;
@@ -23,5 +24,16 @@ public class CustomExceptionsHandlerController {
         new ExceptionResponseDTO(new Date(), ex.getMessage(), request.getDescription(false));
 
     return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  @ExceptionHandler(TodoException.class)
+  public final ResponseEntity<ExceptionResponseDTO> handleTodoException(
+      TodoException ex, WebRequest request) {
+    _logger.severe("Error: " + ex.getClass() + " Message: " + ex.getMessage());
+
+    ExceptionResponseDTO exceptionResponse =
+        new ExceptionResponseDTO(new Date(), ex.getMessage(), request.getDescription(false));
+
+    return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
   }
 }
