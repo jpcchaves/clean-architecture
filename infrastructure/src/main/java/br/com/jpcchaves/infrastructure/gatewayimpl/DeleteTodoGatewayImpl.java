@@ -19,7 +19,10 @@ public class DeleteTodoGatewayImpl implements DeleteTodoGateway {
   @Transactional
   public void delete(Long id) {
     if (!todoRepository.existsById(id)) {
-      throw new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode());
+      throw new TodoException(
+          ErrorCode.TD0001.getMessage(),
+          ErrorCode.TD0001.getCode(),
+          ErrorCode.TD0001.getHttpStatus());
     }
 
     todoRepository.deleteById(id);

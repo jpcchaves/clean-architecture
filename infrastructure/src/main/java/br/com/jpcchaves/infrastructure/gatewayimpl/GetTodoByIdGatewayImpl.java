@@ -27,7 +27,11 @@ public class GetTodoByIdGatewayImpl implements GetTodoGateway {
         todoRepository
             .findById(id)
             .orElseThrow(
-                () -> new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode()));
+                () ->
+                    new TodoException(
+                        ErrorCode.TD0001.getMessage(),
+                        ErrorCode.TD0001.getCode(),
+                        ErrorCode.TD0001.getHttpStatus()));
 
     return todoMapper.toTodo(todoEntity);
   }

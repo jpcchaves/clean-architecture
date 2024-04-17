@@ -34,6 +34,6 @@ public class CustomExceptionsHandlerController {
     ExceptionResponseDTO exceptionResponse =
         new ExceptionResponseDTO(new Date(), ex.getMessage(), request.getDescription(false));
 
-    return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+    return new ResponseEntity<>(exceptionResponse, HttpStatus.valueOf(ex.getStatusCode()));
   }
 }
