@@ -1,5 +1,6 @@
 package br.com.jpcchaves.infrastructure.persistence.entity;
 
+import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -15,11 +16,15 @@ public class TodoEntity extends AuditedEntity {
   @Column(nullable = false)
   private String todo;
 
+  @Enumerated(EnumType.STRING)
+  private TodoStatus status;
+
   public TodoEntity() {}
 
   public TodoEntity(Long id, String todo) {
     this.id = id;
     this.todo = todo;
+    this.status = TodoStatus.IN_PROGRESS;
   }
 
   public TodoEntity(
@@ -32,6 +37,7 @@ public class TodoEntity extends AuditedEntity {
     super(createdAt, updatedAt, createdBy, modifiedBy);
     this.id = id;
     this.todo = todo;
+    this.status = TodoStatus.IN_PROGRESS;
   }
 
   public Long getId() {
@@ -48,5 +54,13 @@ public class TodoEntity extends AuditedEntity {
 
   public void setTodo(String todo) {
     this.todo = todo;
+  }
+
+  public TodoStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(TodoStatus status) {
+    this.status = status;
   }
 }

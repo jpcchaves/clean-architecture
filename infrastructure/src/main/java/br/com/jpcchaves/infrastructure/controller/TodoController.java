@@ -2,6 +2,7 @@ package br.com.jpcchaves.infrastructure.controller;
 
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
+import br.com.jpcchaves.infrastructure.dto.UpdateTodoStatusDTO;
 import br.com.jpcchaves.infrastructure.service.TodoService;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -43,5 +44,12 @@ public class TodoController {
   public ResponseEntity<TodoResponseDTO> update(
       @PathVariable(name = "id") Long id, @RequestBody @Valid TodoRequestDTO todoEntity) {
     return ResponseEntity.ok(todoService.update(id, todoEntity));
+  }
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<?> updateStatus(
+      @PathVariable(name = "id") Long id, @RequestBody UpdateTodoStatusDTO requestDTO) {
+    todoService.updateStatus(id, requestDTO.getStatus());
+    return ResponseEntity.noContent().build();
   }
 }

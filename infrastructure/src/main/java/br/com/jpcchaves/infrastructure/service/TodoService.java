@@ -1,5 +1,6 @@
 package br.com.jpcchaves.infrastructure.service;
 
+import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import java.util.List;
@@ -14,4 +15,6 @@ public interface TodoService {
   void delete(Long id);
 
   TodoResponseDTO update(Long id, TodoRequestDTO request);
+
+  void updateStatus(Long id, TodoStatus status);
 }

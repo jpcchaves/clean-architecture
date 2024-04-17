@@ -1,6 +1,7 @@
 package br.com.jpcchaves.infrastructure.service;
 
 import br.com.jpcchaves.core.domain.Todo;
+import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
@@ -15,6 +16,7 @@ public class TodoServiceImpl implements TodoService {
   private final GetTodoByIdUseCase getTodoByIdUseCase;
   private final DeleteTodoUseCase deleteTodoUseCase;
   private final UpdateTodoUseCase updateTodoUseCase;
+  private final UpdateTodoStatusUseCase updateTodoStatusUseCase;
   private final TodoMapper todoMapper;
 
   public TodoServiceImpl(
@@ -23,12 +25,14 @@ public class TodoServiceImpl implements TodoService {
       GetTodoByIdUseCase getTodoByIdUseCase,
       DeleteTodoUseCase deleteTodoUseCase,
       UpdateTodoUseCase updateTodoUseCase,
+      UpdateTodoStatusUseCase updateTodoStatusUseCase,
       TodoMapper todoMapper) {
     this.createTodoUseCase = createTodoUseCase;
     this.listTodoUseCase = listTodoUseCase;
     this.getTodoByIdUseCase = getTodoByIdUseCase;
     this.deleteTodoUseCase = deleteTodoUseCase;
     this.updateTodoUseCase = updateTodoUseCase;
+    this.updateTodoStatusUseCase = updateTodoStatusUseCase;
     this.todoMapper = todoMapper;
   }
 
@@ -62,5 +66,10 @@ public class TodoServiceImpl implements TodoService {
     Todo updatedTodo = updateTodoUseCase.update(id, todoMapper.toTodo(todoEntity));
 
     return todoMapper.toResponseDTO(updatedTodo);
+  }
+
+  @Override
+  public void updateStatus(Long id, TodoStatus status) {
+    updateTodoStatusUseCase.updateStatus(id, status);
   }
 }
