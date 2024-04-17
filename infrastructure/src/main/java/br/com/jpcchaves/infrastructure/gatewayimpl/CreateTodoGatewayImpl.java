@@ -6,6 +6,7 @@ import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class CreateTodoGatewayImpl implements CreateTodoGateway {
@@ -19,6 +20,7 @@ public class CreateTodoGatewayImpl implements CreateTodoGateway {
     }
 
     @Override
+    @Transactional
     public Todo create(Todo todo) {
         TodoEntity createdTodo = todoRepository.save(todoMapper.toTodoEntity(todo));
 

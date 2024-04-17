@@ -8,6 +8,7 @@ import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class UpdateTodoGatewayImpl implements UpdateTodoGateway {
@@ -21,6 +22,7 @@ public class UpdateTodoGatewayImpl implements UpdateTodoGateway {
     }
 
     @Override
+    @Transactional
     public Todo update(Long id,
                        Todo todo) {
         TodoEntity todoEntity = todoRepository

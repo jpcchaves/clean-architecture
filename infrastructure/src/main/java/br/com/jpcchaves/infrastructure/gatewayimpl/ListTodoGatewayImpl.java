@@ -5,6 +5,7 @@ import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class ListTodoGatewayImpl implements ListTodoGateway {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Todo> list() {
         return todoMapper.toTodoList(todoRepository.findAll());
     }

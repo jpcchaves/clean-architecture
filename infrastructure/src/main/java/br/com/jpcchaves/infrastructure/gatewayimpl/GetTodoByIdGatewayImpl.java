@@ -8,6 +8,7 @@ import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class GetTodoByIdGatewayImpl implements GetTodoGateway {
@@ -21,6 +22,7 @@ public class GetTodoByIdGatewayImpl implements GetTodoGateway {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Todo getTodo(Long id) {
         TodoEntity todoEntity = todoRepository
                 .findById(id)
