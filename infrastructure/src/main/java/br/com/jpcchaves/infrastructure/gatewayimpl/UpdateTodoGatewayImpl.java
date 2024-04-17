@@ -8,29 +8,31 @@ import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class UpdateTodoGatewayImpl implements UpdateTodoGateway {
-    private final TodoRepository todoRepository;
-    private final TodoMapper todoMapper;
+  private final TodoRepository todoRepository;
+  private final TodoMapper todoMapper;
 
-    public UpdateTodoGatewayImpl(TodoRepository todoRepository,
-                                 TodoMapper todoMapper) {
-        this.todoRepository = todoRepository;
-        this.todoMapper = todoMapper;
-    }
+  public UpdateTodoGatewayImpl(TodoRepository todoRepository, TodoMapper todoMapper) {
+    this.todoRepository = todoRepository;
+    this.todoMapper = todoMapper;
+  }
 
-    @Override
-    public Todo update(Long id,
-                       Todo todo) {
-        TodoEntity todoEntity = todoRepository
-                .findById(id)
-                .orElseThrow(() -> new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode()));
+  @Override
+  @Transactional
+  public Todo update(Long id, Todo todo) {
+    TodoEntity todoEntity =
+        todoRepository
+            .findById(id)
+            .orElseThrow(
+                () -> new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode()));
 
-        todoEntity.setTodo(todo.getTodo());
+    todoEntity.setTodo(todo.getTodo());
 
-        TodoEntity updatedTodo = todoRepository.save(todoEntity);
+    TodoEntity updatedTodo = todoRepository.save(todoEntity);
 
-        return todoMapper.toTodo(updatedTodo);
-    }
+    return todoMapper.toTodo(updatedTodo);
+  }
 }

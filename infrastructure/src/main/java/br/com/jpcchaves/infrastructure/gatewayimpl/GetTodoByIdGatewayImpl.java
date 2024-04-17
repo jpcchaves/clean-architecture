@@ -8,24 +8,27 @@ import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class GetTodoByIdGatewayImpl implements GetTodoGateway {
-    private final TodoRepository todoRepository;
-    private final TodoMapper todoMapper;
+  private final TodoRepository todoRepository;
+  private final TodoMapper todoMapper;
 
-    public GetTodoByIdGatewayImpl(TodoRepository todoRepository,
-                                  TodoMapper todoMapper) {
-        this.todoRepository = todoRepository;
-        this.todoMapper = todoMapper;
-    }
+  public GetTodoByIdGatewayImpl(TodoRepository todoRepository, TodoMapper todoMapper) {
+    this.todoRepository = todoRepository;
+    this.todoMapper = todoMapper;
+  }
 
-    @Override
-    public Todo getTodo(Long id) {
-        TodoEntity todoEntity = todoRepository
-                .findById(id)
-                .orElseThrow(() -> new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode()));
+  @Override
+  @Transactional(readOnly = true)
+  public Todo getTodo(Long id) {
+    TodoEntity todoEntity =
+        todoRepository
+            .findById(id)
+            .orElseThrow(
+                () -> new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode()));
 
-        return todoMapper.toTodo(todoEntity);
-    }
+    return todoMapper.toTodo(todoEntity);
+  }
 }

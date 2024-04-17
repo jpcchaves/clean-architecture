@@ -5,22 +5,23 @@ import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.core.exception.enums.ErrorCode;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class DeleteTodoGatewayImpl implements DeleteTodoGateway {
-    private final TodoRepository todoRepository;
+  private final TodoRepository todoRepository;
 
-    public DeleteTodoGatewayImpl(TodoRepository todoRepository) {
-        this.todoRepository = todoRepository;
+  public DeleteTodoGatewayImpl(TodoRepository todoRepository) {
+    this.todoRepository = todoRepository;
+  }
+
+  @Override
+  @Transactional
+  public void delete(Long id) {
+    if (!todoRepository.existsById(id)) {
+      throw new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode());
     }
 
-    @Override
-    public void delete(Long id) {
-        if (!todoRepository.existsById(id)) {
-            throw new TodoException(ErrorCode.TD0001.getMessage(), ErrorCode.TD0001.getCode());
-        }
-        
-
-        todoRepository.deleteById(id);
-    }
+    todoRepository.deleteById(id);
+  }
 }

@@ -1,18 +1,17 @@
 package br.com.jpcchaves.infrastructure.service;
 
-import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
-
+import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import java.util.List;
 
 public interface TodoService {
-    TodoEntity create(TodoEntity todo);
+  TodoResponseDTO create(TodoRequestDTO request);
 
-    List<TodoEntity> list();
+  List<TodoResponseDTO> list();
 
-    TodoEntity getById(Long id);
+  TodoResponseDTO getById(Long id);
 
-    void delete(Long id);
+  void delete(Long id);
 
-    TodoEntity update(Long id,
-                      TodoEntity todoEntity);
+  TodoResponseDTO update(Long id, TodoRequestDTO request);
 }
