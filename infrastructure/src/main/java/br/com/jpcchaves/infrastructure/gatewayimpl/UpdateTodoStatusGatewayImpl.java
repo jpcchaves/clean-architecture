@@ -5,12 +5,15 @@ import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.core.exception.enums.ErrorCode;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
+import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UpdateTodoStatusGatewayImpl implements UpdateTodoStatusGateway {
-  private final TodoRepository todoRepository;
+  @Qualifier("jpa-repository")
+  private final IRepository<TodoEntity, Long> todoRepository;
 
   public UpdateTodoStatusGatewayImpl(TodoRepository todoRepository) {
     this.todoRepository = todoRepository;

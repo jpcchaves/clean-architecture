@@ -6,13 +6,17 @@ import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.core.exception.enums.ErrorCode;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
+import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
 import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class GetTodoByIdGatewayImpl implements GetTodoGateway {
-  private final TodoRepository todoRepository;
+  @Qualifier("jpa-repository")
+  private final IRepository<TodoEntity, Long> todoRepository;
+
   private final TodoMapper todoMapper;
 
   public GetTodoByIdGatewayImpl(TodoRepository todoRepository, TodoMapper todoMapper) {

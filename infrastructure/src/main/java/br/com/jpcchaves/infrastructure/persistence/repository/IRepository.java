@@ -15,4 +15,6 @@ public interface IRepository<E, PK> {
   Page<E> findAll(Pageable pageable);
 
   void deleteById(PK id);
+
+  boolean existsById(PK id);
 }
