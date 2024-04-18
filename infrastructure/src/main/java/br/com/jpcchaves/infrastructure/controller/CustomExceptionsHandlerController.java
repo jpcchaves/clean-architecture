@@ -2,6 +2,7 @@ package br.com.jpcchaves.infrastructure.controller;
 
 import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.infrastructure.dto.ExceptionResponseDTO;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 import java.util.logging.Logger;
@@ -25,6 +26,7 @@ public class CustomExceptionsHandlerController extends ResponseEntityExceptionHa
   public final ResponseEntity<ExceptionResponseDTO> handleInternalServerErrorException(
       Exception ex, WebRequest request) {
     _logger.severe("Error: " + ex.getClass() + " Message: " + ex.getMessage());
+    _logger.severe("Stacktrace: " + Arrays.toString(ex.getStackTrace()));
 
     ExceptionResponseDTO exceptionResponse =
         new ExceptionResponseDTO(new Date(), ex.getMessage(), request.getDescription(false));

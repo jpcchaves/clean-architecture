@@ -7,20 +7,20 @@ import br.com.jpcchaves.core.exception.enums.ErrorCode;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
-import br.com.jpcchaves.infrastructure.persistence.repository.TodoJpaRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class UpdateTodoGatewayImpl implements UpdateTodoGateway {
-  @Qualifier("jpa-repository")
+  @Qualifier("in-memo")
   private final IRepository<TodoEntity, Long> todoRepository;
 
   private final TodoMapper todoMapper;
 
-  public UpdateTodoGatewayImpl(TodoJpaRepository todoJpaRepository, TodoMapper todoMapper) {
-    this.todoRepository = todoJpaRepository;
+  public UpdateTodoGatewayImpl(
+      IRepository<TodoEntity, Long> todoRepository, TodoMapper todoMapper) {
+    this.todoRepository = todoRepository;
     this.todoMapper = todoMapper;
   }
 

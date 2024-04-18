@@ -6,17 +6,16 @@ import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.core.exception.enums.ErrorCode;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
-import br.com.jpcchaves.infrastructure.persistence.repository.TodoJpaRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UpdateTodoStatusGatewayImpl implements UpdateTodoStatusGateway {
-  @Qualifier("jpa-repository")
+  @Qualifier("in-memo")
   private final IRepository<TodoEntity, Long> todoRepository;
 
-  public UpdateTodoStatusGatewayImpl(TodoJpaRepository todoJpaRepository) {
-    this.todoRepository = todoJpaRepository;
+  public UpdateTodoStatusGatewayImpl(IRepository<TodoEntity, Long> todoRepository) {
+    this.todoRepository = todoRepository;
   }
 
   @Override
