@@ -5,7 +5,7 @@ import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.core.exception.enums.ErrorCode;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
-import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
+import br.com.jpcchaves.infrastructure.persistence.repository.TodoJpaRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,8 +15,8 @@ public class DeleteTodoGatewayImpl implements DeleteTodoGateway {
   @Qualifier("jpa-repository")
   private final IRepository<TodoEntity, Long> todoRepository;
 
-  public DeleteTodoGatewayImpl(TodoRepository todoRepository) {
-    this.todoRepository = todoRepository;
+  public DeleteTodoGatewayImpl(TodoJpaRepository todoJpaRepository) {
+    this.todoRepository = todoJpaRepository;
   }
 
   @Override

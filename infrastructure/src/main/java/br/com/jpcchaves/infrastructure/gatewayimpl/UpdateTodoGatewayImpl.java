@@ -7,7 +7,7 @@ import br.com.jpcchaves.core.exception.enums.ErrorCode;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
-import br.com.jpcchaves.infrastructure.persistence.repository.TodoRepository;
+import br.com.jpcchaves.infrastructure.persistence.repository.TodoJpaRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,8 +19,8 @@ public class UpdateTodoGatewayImpl implements UpdateTodoGateway {
 
   private final TodoMapper todoMapper;
 
-  public UpdateTodoGatewayImpl(TodoRepository todoRepository, TodoMapper todoMapper) {
-    this.todoRepository = todoRepository;
+  public UpdateTodoGatewayImpl(TodoJpaRepository todoJpaRepository, TodoMapper todoMapper) {
+    this.todoRepository = todoJpaRepository;
     this.todoMapper = todoMapper;
   }
 

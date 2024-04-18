@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository("jpa-repository")
-public interface TodoRepository
+public interface TodoJpaRepository
     extends IRepository<TodoEntity, Long>, JpaRepository<TodoEntity, Long> {}
