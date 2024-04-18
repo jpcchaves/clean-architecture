@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class ListTodoGatewayImpl implements ListTodoGateway {
-  @Qualifier("in-memo")
+  @Qualifier("${deploy.repo}")
   private final IRepository<TodoEntity, Long> todoRepository;
 
   private final TodoMapper todoMapper;

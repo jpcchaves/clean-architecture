@@ -15,4 +15,4 @@ spring:
     hibernate:
       ddl-auto: update
 deploy:
-  repo: in-memo
+  repo: jpa
