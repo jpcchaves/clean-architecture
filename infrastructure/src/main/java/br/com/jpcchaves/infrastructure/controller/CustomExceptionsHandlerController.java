@@ -42,7 +42,7 @@ public class CustomExceptionsHandlerController extends ResponseEntityExceptionHa
     ExceptionResponseDTO exceptionResponse =
         new ExceptionResponseDTO(new Date(), ex.getMessage(), request.getDescription(false));
 
-    return new ResponseEntity<>(exceptionResponse, HttpStatus.valueOf(ex.getStatusCode()));
+    return new ResponseEntity<>(exceptionResponse, HttpStatus.valueOf(ex.getHttpStatus()));
   }
 
   @Override
