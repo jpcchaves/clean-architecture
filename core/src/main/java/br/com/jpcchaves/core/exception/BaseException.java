@@ -1,6 +1,6 @@
 package br.com.jpcchaves.core.exception;
 
-import br.com.jpcchaves.core.exception.enums.ErrorCode;
+import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
 
 public abstract class BaseException extends RuntimeException {
   private final String code;
@@ -12,10 +12,10 @@ public abstract class BaseException extends RuntimeException {
     this.httpStatus = httpStatus;
   }
 
-  public BaseException(ErrorCode errorCode) {
-    super(errorCode.getMessage());
-    this.code = errorCode.getCode();
-    this.httpStatus = errorCode.getHttpStatus();
+  public BaseException(ExceptionDefinition exceptionDefinition) {
+    super(exceptionDefinition.getMessage());
+    this.code = exceptionDefinition.getCode();
+    this.httpStatus = exceptionDefinition.getHttpStatus();
   }
 
   public String getCode() {
