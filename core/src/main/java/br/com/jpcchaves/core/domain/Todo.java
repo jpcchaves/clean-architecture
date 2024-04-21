@@ -1,13 +1,14 @@
 package br.com.jpcchaves.core.domain;
 
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Todo extends Audited {
   private Long id;
   private String todo;
-  private TodoStatus status = TodoStatus.IN_PROGRESS;
+  private TodoStatus status = TodoStatus.NOT_STARTED;
 
   public Todo() {}
 
