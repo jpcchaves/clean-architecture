@@ -1,5 +1,7 @@
 package br.com.jpcchaves.core.domain;
 
+import br.com.jpcchaves.core.exception.CategoryException;
+import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,10 @@ public class Category {
   }
 
   public void setName(String name) {
+    if (name.isBlank()) {
+      throw new CategoryException(ExceptionDefinition.CT0001);
+    }
+
     this.name = name;
   }
 

@@ -3,7 +3,8 @@ package br.com.jpcchaves.core.exception.enums;
 import br.com.jpcchaves.core.domain.enums.HttpStatus;
 
 public enum ExceptionDefinition {
-  TD0001("TODO not found with the given ID", "TD-0001", HttpStatus.NOT_FOUND.value());
+  TD0001("TODO not found with the given ID", "TD-0001", HttpStatus.NOT_FOUND.value()),
+  CT0001("The category name is a required field", "CT-0001", HttpStatus.BAD_REQUEST.value());
 
   private String message;
   private String code;
