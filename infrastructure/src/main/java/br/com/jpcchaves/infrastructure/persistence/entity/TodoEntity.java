@@ -2,9 +2,8 @@ package br.com.jpcchaves.infrastructure.persistence.entity;
 
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import jakarta.persistence.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import java.time.LocalDateTime;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "todos")
@@ -19,6 +18,10 @@ public class TodoEntity extends AuditedEntity {
 
   @Enumerated(EnumType.STRING)
   private TodoStatus status;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "category_id")
+  private CategoryEntity category;
 
   public TodoEntity() {}
 
@@ -39,6 +42,22 @@ public class TodoEntity extends AuditedEntity {
     this.id = id;
     this.todo = todo;
     this.status = TodoStatus.NOT_STARTED;
+  }
+
+  public TodoEntity(
+      LocalDateTime createdAt,
+      LocalDateTime updatedAt,
+      Long createdBy,
+      Long modifiedBy,
+      Long id,
+      String todo,
+      TodoStatus status,
+      CategoryEntity category) {
+    super(createdAt, updatedAt, createdBy, modifiedBy);
+    this.id = id;
+    this.todo = todo;
+    this.status = TodoStatus.NOT_STARTED;
+    this.category = category;
   }
 
   public Long getId() {
@@ -63,5 +82,13 @@ public class TodoEntity extends AuditedEntity {
 
   public void setStatus(TodoStatus status) {
     this.status = status;
+  }
+
+  public CategoryEntity getCategory() {
+    return category;
+  }
+
+  public void setCategory(CategoryEntity category) {
+    this.category = category;
   }
 }
