@@ -1,6 +1,6 @@
 package br.com.jpcchaves.infrastructure.gatewayimpl;
 
-import br.com.jpcchaves.application.gateway.DeleteTodoGateway;
+import br.com.jpcchaves.application.gateway.todo.DeleteTodoGateway;
 import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;

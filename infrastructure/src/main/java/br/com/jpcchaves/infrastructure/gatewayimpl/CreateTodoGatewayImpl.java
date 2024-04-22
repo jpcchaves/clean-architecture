@@ -1,6 +1,6 @@
 package br.com.jpcchaves.infrastructure.gatewayimpl;
 
-import br.com.jpcchaves.application.gateway.CreateTodoGateway;
+import br.com.jpcchaves.application.gateway.todo.CreateTodoGateway;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
