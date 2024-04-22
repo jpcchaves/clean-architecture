@@ -4,10 +4,10 @@ import br.com.jpcchaves.application.gateway.category.CreateCategoryGateway;
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.usecase.category.CreateCategoryUseCase;
 
-public class CreateGategoryUseCaseImpl implements CreateCategoryUseCase {
+public class CreateCategoryUseCaseImpl implements CreateCategoryUseCase {
   private final CreateCategoryGateway createGategoryGateway;
 
-  public CreateGategoryUseCaseImpl(CreateCategoryGateway createGategoryGateway) {
+  public CreateCategoryUseCaseImpl(CreateCategoryGateway createGategoryGateway) {
     this.createGategoryGateway = createGategoryGateway;
   }
 

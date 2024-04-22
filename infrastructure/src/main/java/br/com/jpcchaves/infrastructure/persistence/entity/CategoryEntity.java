@@ -24,6 +24,18 @@ public class CategoryEntity {
   @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "category")
   private List<TodoEntity> todoList = new ArrayList<>();
 
+  public CategoryEntity() {}
+
+  public CategoryEntity(Long id, String name, List<TodoEntity> todoList) {
+    this.id = id;
+    this.name = name;
+    this.todoList = todoList;
+  }
+
+  public CategoryEntity(String name) {
+    this.name = name;
+  }
+
   public Long getId() {
     return id;
   }
