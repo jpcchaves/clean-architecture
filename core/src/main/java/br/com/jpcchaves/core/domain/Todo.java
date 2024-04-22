@@ -1,7 +1,8 @@
 package br.com.jpcchaves.core.domain;
 
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
-
+import br.com.jpcchaves.core.exception.TodoException;
+import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -56,6 +57,10 @@ public class Todo extends Audited {
   }
 
   public void setTodo(String todo) {
+    if(Objects.isNull(todo) || todo.isBlank() || todo.isEmpty()) {
+      throw new TodoException(ExceptionDefinition.TD0001);
+    }
+
     this.todo = todo;
   }
 
