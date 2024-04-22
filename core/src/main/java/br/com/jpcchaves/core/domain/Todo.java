@@ -10,6 +10,7 @@ public class Todo extends Audited {
   private Long id;
   private String todo;
   private TodoStatus status = TodoStatus.NOT_STARTED;
+  private Category category;
 
   public Todo() {}
 
@@ -44,6 +45,22 @@ public class Todo extends Audited {
     this.status = status;
   }
 
+  public Todo(
+      LocalDateTime createdAt,
+      LocalDateTime updatedAt,
+      Long createdBy,
+      Long modifiedBy,
+      Long id,
+      String todo,
+      TodoStatus status,
+      Category category) {
+    super(createdAt, updatedAt, createdBy, modifiedBy);
+    this.id = id;
+    this.todo = todo;
+    this.status = status;
+    this.category = category;
+  }
+
   public Long getId() {
     return id;
   }
@@ -57,7 +74,7 @@ public class Todo extends Audited {
   }
 
   public void setTodo(String todo) {
-    if(Objects.isNull(todo) || todo.isBlank() || todo.isEmpty()) {
+    if (Objects.isNull(todo) || todo.isBlank() || todo.isEmpty()) {
       throw new TodoException(ExceptionDefinition.TD0001);
     }
 
@@ -70,6 +87,14 @@ public class Todo extends Audited {
 
   public void setStatus(TodoStatus status) {
     this.status = status;
+  }
+
+  public Category getCategory() {
+    return category;
+  }
+
+  public void setCategory(Category category) {
+    this.category = category;
   }
 
   @Override
@@ -94,6 +119,16 @@ public class Todo extends Audited {
 
   @Override
   public String toString() {
-    return "Todo{" + "id=" + id + ", todo='" + todo + '\'' + ", status=" + status + '}';
+    return "Todo{"
+        + "id="
+        + id
+        + ", todo='"
+        + todo
+        + '\''
+        + ", status="
+        + status
+        + ", category="
+        + category
+        + '}';
   }
 }
