@@ -1,13 +1,13 @@
 package br.com.jpcchaves.application.usecaseimpl.category;
 
-import br.com.jpcchaves.application.gateway.category.CreateGategoryGateway;
+import br.com.jpcchaves.application.gateway.category.CreateCategoryGateway;
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.usecase.category.CreateCategoryUseCase;
 
 public class CreateGategoryUseCaseImpl implements CreateCategoryUseCase {
-  private final CreateGategoryGateway createGategoryGateway;
+  private final CreateCategoryGateway createGategoryGateway;
 
-  public CreateGategoryUseCaseImpl(CreateGategoryGateway createGategoryGateway) {
+  public CreateGategoryUseCaseImpl(CreateCategoryGateway createGategoryGateway) {
     this.createGategoryGateway = createGategoryGateway;
   }
 
