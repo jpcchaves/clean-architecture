@@ -3,7 +3,7 @@ package br.com.jpcchaves.infrastructure.controller;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.dto.UpdateTodoStatusDTO;
-import br.com.jpcchaves.infrastructure.service.TodoService;
+import br.com.jpcchaves.infrastructure.service.todo.TodoService;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
