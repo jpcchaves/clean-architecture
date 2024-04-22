@@ -5,7 +5,12 @@ import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
-import br.com.jpcchaves.usecase.*;
+import br.com.jpcchaves.usecase.todo.CreateTodoUseCase;
+import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
+import br.com.jpcchaves.usecase.todo.GetTodoByIdUseCase;
+import br.com.jpcchaves.usecase.todo.ListTodoUseCase;
+import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
+import br.com.jpcchaves.usecase.todo.UpdateTodoUseCase;
 import java.util.List;
 import org.springframework.stereotype.Service;
 

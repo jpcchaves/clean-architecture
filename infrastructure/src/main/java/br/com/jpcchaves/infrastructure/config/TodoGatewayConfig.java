@@ -2,7 +2,12 @@ package br.com.jpcchaves.infrastructure.config;
 
 import br.com.jpcchaves.application.usecaseimpl.*;
 import br.com.jpcchaves.infrastructure.gatewayimpl.*;
-import br.com.jpcchaves.usecase.*;
+import br.com.jpcchaves.usecase.todo.CreateTodoUseCase;
+import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
+import br.com.jpcchaves.usecase.todo.GetTodoByIdUseCase;
+import br.com.jpcchaves.usecase.todo.ListTodoUseCase;
+import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
+import br.com.jpcchaves.usecase.todo.UpdateTodoUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

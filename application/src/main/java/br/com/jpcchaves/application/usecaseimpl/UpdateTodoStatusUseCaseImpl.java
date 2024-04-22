@@ -2,7 +2,7 @@ package br.com.jpcchaves.application.usecaseimpl;
 
 import br.com.jpcchaves.application.gateway.UpdateTodoStatusGateway;
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
-import br.com.jpcchaves.usecase.UpdateTodoStatusUseCase;
+import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
 
 public class UpdateTodoStatusUseCaseImpl implements UpdateTodoStatusUseCase {
   private final UpdateTodoStatusGateway updateTodoStatusGateway;

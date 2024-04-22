@@ -2,7 +2,7 @@ package br.com.jpcchaves.application.usecaseimpl;
 
 import br.com.jpcchaves.application.gateway.UpdateTodoGateway;
 import br.com.jpcchaves.core.domain.Todo;
-import br.com.jpcchaves.usecase.UpdateTodoUseCase;
+import br.com.jpcchaves.usecase.todo.UpdateTodoUseCase;
 
 public class UpdateTodoUseCaseImpl implements UpdateTodoUseCase {
   private final UpdateTodoGateway updateTodoGateway;
