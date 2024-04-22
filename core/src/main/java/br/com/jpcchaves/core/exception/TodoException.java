@@ -1,21 +1,13 @@
 package br.com.jpcchaves.core.exception;
 
-public class TodoException extends RuntimeException {
-  private String code;
-  private int statusCode;
+import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
 
-  public TodoException(String message, String code) {
-    super(message);
-    this.code = code;
+public class TodoException extends BaseException {
+  public TodoException(String message, String code, int httpStatus) {
+    super(message, code, httpStatus);
   }
 
-  public TodoException(String message, String code, int statusCode) {
-    super(message);
-    this.code = code;
-    this.statusCode = statusCode;
-  }
-
-  public int getStatusCode() {
-    return statusCode;
+  public TodoException(ExceptionDefinition exceptionDefinition) {
+    super(exceptionDefinition);
   }
 }

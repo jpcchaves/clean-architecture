@@ -32,4 +32,9 @@ public class TodoGatewayConfig {
   UpdateTodoUseCase update(UpdateTodoGatewayImpl updateTodoGatewayImpl) {
     return new UpdateTodoUseCaseImpl(updateTodoGatewayImpl);
   }
+
+  @Bean
+  UpdateTodoStatusUseCase updateStatus(UpdateTodoStatusGatewayImpl updateTodoStatusGatewayImpl) {
+    return new UpdateTodoStatusUseCaseImpl(updateTodoStatusGatewayImpl);
+  }
 }

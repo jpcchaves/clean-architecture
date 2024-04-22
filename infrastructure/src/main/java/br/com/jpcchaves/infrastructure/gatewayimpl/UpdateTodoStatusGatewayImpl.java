@@ -1,37 +1,32 @@
 package br.com.jpcchaves.infrastructure.gatewayimpl;
 
-import br.com.jpcchaves.application.gateway.GetTodoGateway;
-import br.com.jpcchaves.core.domain.Todo;
+import br.com.jpcchaves.application.gateway.UpdateTodoStatusGateway;
+import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
-import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class GetTodoByIdGatewayImpl implements GetTodoGateway {
+public class UpdateTodoStatusGatewayImpl implements UpdateTodoStatusGateway {
   @Qualifier("${deploy.repo}")
   private final IRepository<TodoEntity, Long> todoRepository;
 
-  private final TodoMapper todoMapper;
-
-  public GetTodoByIdGatewayImpl(
-      IRepository<TodoEntity, Long> todoRepository, TodoMapper todoMapper) {
+  public UpdateTodoStatusGatewayImpl(IRepository<TodoEntity, Long> todoRepository) {
     this.todoRepository = todoRepository;
-    this.todoMapper = todoMapper;
   }
 
   @Override
-  @Transactional(readOnly = true)
-  public Todo getTodo(Long id) {
+  public void updateStatus(Long id, TodoStatus status) {
     TodoEntity todoEntity =
         todoRepository
             .findById(id)
             .orElseThrow(() -> new TodoException(ExceptionDefinition.TD0001));
 
-    return todoMapper.toTodo(todoEntity);
+    todoEntity.setStatus(status);
+
+    todoRepository.save(todoEntity);
   }
 }
