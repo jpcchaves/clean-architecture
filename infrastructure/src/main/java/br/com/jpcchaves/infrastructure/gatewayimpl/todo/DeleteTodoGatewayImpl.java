@@ -1,4 +1,4 @@
-package br.com.jpcchaves.infrastructure.gatewayimpl;
+package br.com.jpcchaves.infrastructure.gatewayimpl.todo;
 
 import br.com.jpcchaves.application.gateway.todo.DeleteTodoGateway;
 import br.com.jpcchaves.core.exception.TodoException;

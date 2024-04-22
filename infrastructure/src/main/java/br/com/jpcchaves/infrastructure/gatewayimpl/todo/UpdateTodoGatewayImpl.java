@@ -1,4 +1,4 @@
-package br.com.jpcchaves.infrastructure.gatewayimpl;
+package br.com.jpcchaves.infrastructure.gatewayimpl.todo;
 
 import br.com.jpcchaves.application.gateway.todo.UpdateTodoGateway;
 import br.com.jpcchaves.core.domain.Todo;
