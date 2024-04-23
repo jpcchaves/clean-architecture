@@ -13,6 +13,7 @@ import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
 import br.com.jpcchaves.usecase.todo.UpdateTodoUseCase;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TodoServiceImpl implements TodoService {
@@ -42,6 +43,7 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
+  @Transactional
   public TodoResponseDTO create(TodoRequestDTO todo) {
 
     Todo createdTodo = createTodoUseCase.create(todoMapper.toTodo(todo));
@@ -50,11 +52,13 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public List<TodoResponseDTO> list() {
     return todoMapper.toResponseDTOList(listTodoUseCase.list());
   }
 
   @Override
+  @Transactional(readOnly = true)
   public TodoResponseDTO getById(Long id) {
     Todo todo = getTodoByIdUseCase.getById(id);
 
@@ -62,11 +66,13 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
+  @Transactional
   public void delete(Long id) {
     deleteTodoUseCase.delete(id);
   }
 
   @Override
+  @Transactional
   public TodoResponseDTO update(Long id, TodoRequestDTO todoEntity) {
     Todo updatedTodo = updateTodoUseCase.update(id, todoMapper.toTodo(todoEntity));
 
@@ -74,6 +80,7 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
+  @Transactional
   public void updateStatus(Long id, TodoStatus status) {
     updateTodoStatusUseCase.updateStatus(id, status);
   }
