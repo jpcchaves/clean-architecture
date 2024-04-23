@@ -1,10 +1,12 @@
 package br.com.jpcchaves.infrastructure.service.todo;
 
+import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
+import br.com.jpcchaves.usecase.category.GetCategoryByIdUseCase;
 import br.com.jpcchaves.usecase.todo.CreateTodoUseCase;
 import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
 import br.com.jpcchaves.usecase.todo.GetTodoByIdUseCase;
@@ -23,6 +25,7 @@ public class TodoServiceImpl implements TodoService {
   private final DeleteTodoUseCase deleteTodoUseCase;
   private final UpdateTodoUseCase updateTodoUseCase;
   private final UpdateTodoStatusUseCase updateTodoStatusUseCase;
+  private final GetCategoryByIdUseCase getCategoryByIdUseCase;
   private final TodoMapper todoMapper;
 
   public TodoServiceImpl(
@@ -32,7 +35,8 @@ public class TodoServiceImpl implements TodoService {
       DeleteTodoUseCase deleteTodoUseCase,
       UpdateTodoUseCase updateTodoUseCase,
       UpdateTodoStatusUseCase updateTodoStatusUseCase,
-      TodoMapper todoMapper) {
+      TodoMapper todoMapper,
+      GetCategoryByIdUseCase getCategoryByIdUseCase) {
     this.createTodoUseCase = createTodoUseCase;
     this.listTodoUseCase = listTodoUseCase;
     this.getTodoByIdUseCase = getTodoByIdUseCase;
@@ -40,13 +44,18 @@ public class TodoServiceImpl implements TodoService {
     this.updateTodoUseCase = updateTodoUseCase;
     this.updateTodoStatusUseCase = updateTodoStatusUseCase;
     this.todoMapper = todoMapper;
+    this.getCategoryByIdUseCase = getCategoryByIdUseCase;
   }
 
   @Override
   @Transactional
   public TodoResponseDTO create(TodoRequestDTO todo) {
+    Category category = getCategoryByIdUseCase.getById(todo.getCategoryId());
 
-    Todo createdTodo = createTodoUseCase.create(todoMapper.toTodo(todo));
+    Todo coreTodo = todoMapper.toTodo(todo);
+    coreTodo.setCategory(category);
+
+    Todo createdTodo = createTodoUseCase.create(coreTodo);
 
     return todoMapper.toResponseDTO(createdTodo);
   }
