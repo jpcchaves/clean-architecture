@@ -7,11 +7,14 @@ import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
 import br.com.jpcchaves.infrastructure.mapper.CategoryMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UpdateCategoryGatewayImpl implements UpdateCategoryGateway {
+  @Qualifier("${deploy.repo}")
   private final IRepository<CategoryEntity, Long> repository;
+
   private final CategoryMapper categoryMapper;
 
   public UpdateCategoryGatewayImpl(

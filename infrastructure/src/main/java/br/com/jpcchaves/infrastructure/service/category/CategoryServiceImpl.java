@@ -5,6 +5,7 @@ import br.com.jpcchaves.infrastructure.dto.CategoryRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.CategoryResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.CategoryMapper;
 import br.com.jpcchaves.usecase.category.CreateCategoryUseCase;
+import br.com.jpcchaves.usecase.category.DeleteCategoryUseCase;
 import br.com.jpcchaves.usecase.category.GetCategoryByIdUseCase;
 import br.com.jpcchaves.usecase.category.ListCategoriesUseCase;
 import br.com.jpcchaves.usecase.category.UpdateCategoryUseCase;
@@ -18,6 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
   private final ListCategoriesUseCase listCategoriesUseCase;
   private final GetCategoryByIdUseCase getCategoryByIdUseCase;
   private final UpdateCategoryUseCase updateCategoryUseCase;
+  private final DeleteCategoryUseCase deleteCategoryUseCase;
   private final CategoryMapper categoryMapper;
 
   public CategoryServiceImpl(
@@ -25,11 +27,13 @@ public class CategoryServiceImpl implements CategoryService {
       ListCategoriesUseCase listCategoriesUseCase,
       GetCategoryByIdUseCase getCategoryByIdUseCase,
       UpdateCategoryUseCase updateCategoryUseCase,
+      DeleteCategoryUseCase deleteCategoryUseCase,
       CategoryMapper categoryMapper) {
     this.createCategoryUseCase = createCategoryUseCase;
     this.listCategoriesUseCase = listCategoriesUseCase;
     this.getCategoryByIdUseCase = getCategoryByIdUseCase;
     this.updateCategoryUseCase = updateCategoryUseCase;
+    this.deleteCategoryUseCase = deleteCategoryUseCase;
     this.categoryMapper = categoryMapper;
   }
 
@@ -60,5 +64,10 @@ public class CategoryServiceImpl implements CategoryService {
     Category category = updateCategoryUseCase.update(id, categoryMapper.toCoreCategory(requestDTO));
 
     return categoryMapper.toDto(category);
+  }
+
+  @Override
+  public void delete(Long id) {
+    deleteCategoryUseCase.delete(id);
   }
 }
