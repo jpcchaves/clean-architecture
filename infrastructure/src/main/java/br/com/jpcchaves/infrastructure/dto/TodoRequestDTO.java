@@ -6,6 +6,7 @@ public class TodoRequestDTO {
   @NotBlank(message = "The to do is a required field!")
   private String todo = null;
 
+  @NotBlank(message = "The category is a required field!")
   private Long categoryId;
 
   public TodoRequestDTO() {}
