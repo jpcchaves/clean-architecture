@@ -8,4 +8,6 @@ public interface CategoryService {
   CategoryResponseDTO create(CategoryRequestDTO category);
 
   List<CategoryResponseDTO> list();
+
+  CategoryResponseDTO getById(Long id);
 }
