@@ -35,4 +35,8 @@ public class CategoryMapper {
   public List<Category> toCoreCategoryList(List<CategoryEntity> categoryEntityList) {
     return mapperUtils.parseObjectsCollection(categoryEntityList, Category.class);
   }
+
+  public List<CategoryResponseDTO> toCategoryResDTOList(List<Category> categoryList) {
+    return mapperUtils.parseObjectsCollection(categoryList, CategoryResponseDTO.class);
+  }
 }
