@@ -1,5 +1,6 @@
 package br.com.jpcchaves.infrastructure.controller;
 
+import br.com.jpcchaves.core.exception.CategoryException;
 import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.infrastructure.dto.ExceptionResponseDTO;
 import java.util.Arrays;
@@ -37,6 +38,17 @@ public class CustomExceptionsHandlerController extends ResponseEntityExceptionHa
   @ExceptionHandler(TodoException.class)
   public final ResponseEntity<ExceptionResponseDTO> handleTodoException(
       TodoException ex, WebRequest request) {
+    _logger.severe("Error: " + ex.getClass() + " Message: " + ex.getMessage());
+
+    ExceptionResponseDTO exceptionResponse =
+        new ExceptionResponseDTO(new Date(), ex.getMessage(), request.getDescription(false));
+
+    return new ResponseEntity<>(exceptionResponse, HttpStatus.valueOf(ex.getHttpStatus()));
+  }
+
+  @ExceptionHandler(CategoryException.class)
+  public final ResponseEntity<ExceptionResponseDTO> handleCategoryException(
+      CategoryException ex, WebRequest request) {
     _logger.severe("Error: " + ex.getClass() + " Message: " + ex.getMessage());
 
     ExceptionResponseDTO exceptionResponse =
