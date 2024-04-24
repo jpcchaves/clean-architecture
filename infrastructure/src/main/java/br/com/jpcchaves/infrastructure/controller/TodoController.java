@@ -5,6 +5,7 @@ import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.dto.UpdateTodoStatusDTO;
 import br.com.jpcchaves.infrastructure.service.todo.TodoService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,5 +52,11 @@ public class TodoController {
       @PathVariable(name = "id") Long id, @RequestBody @Valid UpdateTodoStatusDTO requestDTO) {
     todoService.updateStatus(id, requestDTO.getStatus());
     return ResponseEntity.noContent().build();
+  }
+
+  @GetMapping("/by-category")
+  public ResponseEntity<List<TodoResponseDTO>> listByCategory(
+      @PathParam("category") Long categoryId) {
+    return ResponseEntity.ok(todoService.listByCategory(categoryId));
   }
 }
