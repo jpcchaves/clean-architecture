@@ -1,6 +1,7 @@
 package br.com.jpcchaves.infrastructure.config;
 
-import br.com.jpcchaves.infrastructure.mapper.TodoDTOMapper;
+import br.com.jpcchaves.infrastructure.mapper.TodoRequestDTOMapper;
+import br.com.jpcchaves.infrastructure.mapper.TodoResponseDTOMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,8 @@ public class MapperConfig {
   public ModelMapper modelMapper() {
     ModelMapper modelMapper = new ModelMapper();
 
-    modelMapper.addMappings(new TodoDTOMapper());
+    modelMapper.addMappings(new TodoRequestDTOMapper());
+    modelMapper.addMappings(new TodoResponseDTOMapper());
 
     return modelMapper;
   }
