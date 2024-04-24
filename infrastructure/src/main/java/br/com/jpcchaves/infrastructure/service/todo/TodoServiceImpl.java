@@ -49,10 +49,10 @@ public class TodoServiceImpl implements TodoService {
 
   @Override
   @Transactional
-  public TodoResponseDTO create(TodoRequestDTO todo) {
-    Category category = getCategoryByIdUseCase.getById(todo.getCategoryId());
+  public TodoResponseDTO create(TodoRequestDTO requestDTO) {
+    Category category = getCategoryByIdUseCase.getById(requestDTO.getCategoryId());
 
-    Todo coreTodo = todoMapper.toTodo(todo);
+    Todo coreTodo = todoMapper.toTodo(requestDTO);
     coreTodo.setCategory(category);
 
     Todo createdTodo = createTodoUseCase.create(coreTodo);
@@ -82,8 +82,10 @@ public class TodoServiceImpl implements TodoService {
 
   @Override
   @Transactional
-  public TodoResponseDTO update(Long id, TodoRequestDTO todoEntity) {
-    Todo updatedTodo = updateTodoUseCase.update(id, todoMapper.toTodo(todoEntity));
+  public TodoResponseDTO update(Long id, TodoRequestDTO requestDTO) {
+    Todo todo = todoMapper.toTodo(requestDTO);
+
+    Todo updatedTodo = updateTodoUseCase.update(id, todo);
 
     return todoMapper.toResponseDTO(updatedTodo);
   }
