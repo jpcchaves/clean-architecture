@@ -8,4 +8,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 @ConditionalOnProperty(value = "deploy.repo", havingValue = "jpa")
 public interface CategoryJpaRepository
-    extends IRepository<CategoryEntity, Long>, JpaRepository<CategoryEntity, Long> {}
+    extends ICategoryRepository<CategoryEntity, Long>, JpaRepository<CategoryEntity, Long> {}

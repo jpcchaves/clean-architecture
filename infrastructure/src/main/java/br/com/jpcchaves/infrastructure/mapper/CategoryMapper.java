@@ -5,6 +5,7 @@ import br.com.jpcchaves.infrastructure.dto.CategoryRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.CategoryResponseDTO;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
 import br.com.jpcchaves.infrastructure.utils.MapperUtils;
+import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,5 +30,13 @@ public class CategoryMapper {
 
   public CategoryResponseDTO toDto(Category category) {
     return mapperUtils.parseObject(category, CategoryResponseDTO.class);
+  }
+
+  public List<Category> toCoreCategoryList(List<CategoryEntity> categoryEntityList) {
+    return mapperUtils.parseObjectsCollection(categoryEntityList, Category.class);
+  }
+
+  public List<CategoryResponseDTO> toCategoryResDTOList(List<Category> categoryList) {
+    return mapperUtils.parseObjectsCollection(categoryList, CategoryResponseDTO.class);
   }
 }

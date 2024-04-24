@@ -2,8 +2,6 @@ package br.com.jpcchaves.infrastructure.gatewayimpl.todo;
 
 import br.com.jpcchaves.application.gateway.todo.UpdateTodoGateway;
 import br.com.jpcchaves.core.domain.Todo;
-import br.com.jpcchaves.core.exception.TodoException;
-import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
@@ -27,14 +25,8 @@ public class UpdateTodoGatewayImpl implements UpdateTodoGateway {
   @Override
   @Transactional
   public Todo update(Long id, Todo todo) {
-    TodoEntity todoEntity =
-        todoRepository
-            .findById(id)
-            .orElseThrow(() -> new TodoException(ExceptionDefinition.TD0001));
-
-    todoEntity.setTodo(todo.getTodo());
-
-    TodoEntity updatedTodo = todoRepository.save(todoEntity);
+    TodoEntity entity = todoMapper.toTodoEntity(todo);
+    TodoEntity updatedTodo = todoRepository.save(entity);
 
     return todoMapper.toTodo(updatedTodo);
   }

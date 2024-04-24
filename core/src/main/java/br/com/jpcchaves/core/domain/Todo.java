@@ -14,6 +14,10 @@ public class Todo extends Audited {
 
   public Todo() {}
 
+  public Todo(String todo) {
+    this.todo = todo;
+  }
+
   public Todo(Long id, String todo) {
     this.id = id;
     this.todo = todo;

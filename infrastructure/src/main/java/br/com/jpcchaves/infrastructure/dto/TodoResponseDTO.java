@@ -6,6 +6,7 @@ public class TodoResponseDTO {
   private Long id;
   private String todo;
   private TodoStatus status;
+  private String category;
 
   public TodoResponseDTO() {}
 
@@ -18,6 +19,13 @@ public class TodoResponseDTO {
     this.id = id;
     this.todo = todo;
     this.status = status;
+  }
+
+  public TodoResponseDTO(Long id, String todo, TodoStatus status, String category) {
+    this.id = id;
+    this.todo = todo;
+    this.status = status;
+    this.category = category;
   }
 
   public Long getId() {
@@ -42,5 +50,13 @@ public class TodoResponseDTO {
 
   public void setStatus(TodoStatus status) {
     this.status = status;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
   }
 }

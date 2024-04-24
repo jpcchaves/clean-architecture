@@ -20,7 +20,7 @@ public class TodoEntity extends AuditedEntity {
   private TodoStatus status;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "category_id")
+  @JoinColumn(name = "category_id", nullable = false)
   private CategoryEntity category;
 
   public TodoEntity() {}

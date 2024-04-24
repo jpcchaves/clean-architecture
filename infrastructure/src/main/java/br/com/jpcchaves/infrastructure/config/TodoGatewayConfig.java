@@ -5,12 +5,14 @@ import br.com.jpcchaves.infrastructure.gatewayimpl.todo.CreateTodoGatewayImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.todo.DeleteTodoGatewayImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.todo.GetTodoByIdGatewayImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.todo.ListTodoGatewayImpl;
+import br.com.jpcchaves.infrastructure.gatewayimpl.todo.ListTodosByCategoryGatewayImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.todo.UpdateTodoGatewayImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.todo.UpdateTodoStatusGatewayImpl;
 import br.com.jpcchaves.usecase.todo.CreateTodoUseCase;
 import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
 import br.com.jpcchaves.usecase.todo.GetTodoByIdUseCase;
 import br.com.jpcchaves.usecase.todo.ListTodoUseCase;
+import br.com.jpcchaves.usecase.todo.ListTodosByCategoryUseCase;
 import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
 import br.com.jpcchaves.usecase.todo.UpdateTodoUseCase;
 import org.springframework.context.annotation.Bean;
@@ -46,5 +48,11 @@ public class TodoGatewayConfig {
   @Bean
   UpdateTodoStatusUseCase updateStatus(UpdateTodoStatusGatewayImpl updateTodoStatusGatewayImpl) {
     return new UpdateTodoStatusUseCaseImpl(updateTodoStatusGatewayImpl);
+  }
+
+  @Bean
+  ListTodosByCategoryUseCase listByCategory(
+      ListTodosByCategoryGatewayImpl listTodosByCategoryGatewayImpl) {
+    return new ListTodosByCategoryUseCaseImpl(listTodosByCategoryGatewayImpl);
   }
 }
