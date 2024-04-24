@@ -11,6 +11,7 @@ import br.com.jpcchaves.usecase.todo.CreateTodoUseCase;
 import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
 import br.com.jpcchaves.usecase.todo.GetTodoByIdUseCase;
 import br.com.jpcchaves.usecase.todo.ListTodoUseCase;
+import br.com.jpcchaves.usecase.todo.ListTodosByCategoryUseCase;
 import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
 import br.com.jpcchaves.usecase.todo.UpdateTodoUseCase;
 import java.util.List;
@@ -26,6 +27,7 @@ public class TodoServiceImpl implements TodoService {
   private final UpdateTodoUseCase updateTodoUseCase;
   private final UpdateTodoStatusUseCase updateTodoStatusUseCase;
   private final GetCategoryByIdUseCase getCategoryByIdUseCase;
+  private final ListTodosByCategoryUseCase listTodosByCategoryUseCase;
   private final TodoMapper todoMapper;
 
   public TodoServiceImpl(
@@ -36,7 +38,8 @@ public class TodoServiceImpl implements TodoService {
       UpdateTodoUseCase updateTodoUseCase,
       UpdateTodoStatusUseCase updateTodoStatusUseCase,
       TodoMapper todoMapper,
-      GetCategoryByIdUseCase getCategoryByIdUseCase) {
+      GetCategoryByIdUseCase getCategoryByIdUseCase,
+      ListTodosByCategoryUseCase listTodosByCategoryUseCase) {
     this.createTodoUseCase = createTodoUseCase;
     this.listTodoUseCase = listTodoUseCase;
     this.getTodoByIdUseCase = getTodoByIdUseCase;
@@ -45,6 +48,7 @@ public class TodoServiceImpl implements TodoService {
     this.updateTodoStatusUseCase = updateTodoStatusUseCase;
     this.todoMapper = todoMapper;
     this.getCategoryByIdUseCase = getCategoryByIdUseCase;
+    this.listTodosByCategoryUseCase = listTodosByCategoryUseCase;
   }
 
   @Override
@@ -98,5 +102,12 @@ public class TodoServiceImpl implements TodoService {
   @Transactional
   public void updateStatus(Long id, TodoStatus status) {
     updateTodoStatusUseCase.updateStatus(id, status);
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public List<TodoResponseDTO> listByCategory(Long categoryId) {
+    List<Todo> todosList = listTodosByCategoryUseCase.listByCategory(categoryId);
+    return todoMapper.toResponseDTO(todosList);
   }
 }

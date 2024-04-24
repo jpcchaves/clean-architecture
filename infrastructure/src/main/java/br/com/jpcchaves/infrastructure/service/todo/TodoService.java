@@ -16,5 +16,7 @@ public interface TodoService {
 
   TodoResponseDTO update(Long id, TodoRequestDTO request);
 
+  List<TodoResponseDTO> listByCategory(Long categoryId);
+
   void updateStatus(Long id, TodoStatus status);
 }
