@@ -83,7 +83,11 @@ public class TodoServiceImpl implements TodoService {
   @Override
   @Transactional
   public TodoResponseDTO update(Long id, TodoRequestDTO requestDTO) {
-    Todo todo = todoMapper.toTodo(requestDTO);
+    Category category = getCategoryByIdUseCase.getById(requestDTO.getCategoryId());
+    Todo todo = getTodoByIdUseCase.getById(id);
+
+    todo.setTodo(requestDTO.getTodo());
+    todo.setCategory(category);
 
     Todo updatedTodo = updateTodoUseCase.update(id, todo);
 
