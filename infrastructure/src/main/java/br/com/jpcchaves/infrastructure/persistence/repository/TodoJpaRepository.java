@@ -8,4 +8,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 @ConditionalOnProperty(value = "deploy.repo", havingValue = "jpa")
 public interface TodoJpaRepository
-    extends IRepository<TodoEntity, Long>, JpaRepository<TodoEntity, Long> {}
+    extends ITodoRepository<TodoEntity, Long>, JpaRepository<TodoEntity, Long> {}
