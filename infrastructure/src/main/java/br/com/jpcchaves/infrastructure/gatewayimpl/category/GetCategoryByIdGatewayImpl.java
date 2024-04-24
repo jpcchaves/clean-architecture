@@ -6,7 +6,7 @@ import br.com.jpcchaves.core.exception.CategoryException;
 import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
 import br.com.jpcchaves.infrastructure.mapper.CategoryMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
-import br.com.jpcchaves.infrastructure.persistence.repository.IRepository;
+import br.com.jpcchaves.infrastructure.persistence.repository.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Component;
 public class GetCategoryByIdGatewayImpl implements GetCategoryByIdGateway {
 
   @Qualifier("${deploy.repo}")
-  private final IRepository<CategoryEntity, Long> repository;
+  private final ICategoryRepository<CategoryEntity, Long> repository;
 
   private final CategoryMapper categoryMapper;
 
   public GetCategoryByIdGatewayImpl(
-      IRepository<CategoryEntity, Long> repository, CategoryMapper categoryMapper) {
+      ICategoryRepository<CategoryEntity, Long> repository, CategoryMapper categoryMapper) {
     this.repository = repository;
     this.categoryMapper = categoryMapper;
   }
