@@ -47,4 +47,8 @@ public class TodoMapper {
   public List<TodoResponseDTO> toResponseDTOList(List<Todo> todoList) {
     return mapperUtils.parseObjectsCollection(todoList, TodoResponseDTO.class);
   }
+
+  public List<TodoResponseDTO> toResponseDTO(List<Todo> todosList) {
+    return mapperUtils.parseObjectsCollection(todosList, TodoResponseDTO.class);
+  }
 }
