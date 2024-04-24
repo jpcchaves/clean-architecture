@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 public class TodoRequestDTO {
   @NotBlank(message = "The to do is a required field!")
-  private String todo = null;
+  private String todo;
 
   @NotNull(message = "The category cannot be null!")
   @Min(value = 0, message = "The category is a required field!")
