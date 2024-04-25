@@ -1,6 +1,12 @@
 package br.com.jpcchaves.infrastructure.config;
 
-import br.com.jpcchaves.application.usecaseimpl.*;
+import br.com.jpcchaves.application.usecaseimpl.todo.CreateTodoUseCaseImpl;
+import br.com.jpcchaves.application.usecaseimpl.todo.DeleteTodoUseCaseImpl;
+import br.com.jpcchaves.application.usecaseimpl.todo.GetTodoByIdUseCaseImpl;
+import br.com.jpcchaves.application.usecaseimpl.todo.ListTodoUseCaseImpl;
+import br.com.jpcchaves.application.usecaseimpl.todo.ListTodosByCategoryUseCaseImpl;
+import br.com.jpcchaves.application.usecaseimpl.todo.UpdateTodoStatusUseCaseImpl;
+import br.com.jpcchaves.application.usecaseimpl.todo.UpdateTodoUseCaseImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.todo.CreateTodoGatewayImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.todo.DeleteTodoGatewayImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.todo.GetTodoByIdGatewayImpl;
