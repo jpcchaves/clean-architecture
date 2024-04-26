@@ -1,4 +1,4 @@
-package br.com.jpcchaves.application.usecaseimpl;
+package br.com.jpcchaves.application.usecaseimpl.todo;
 
 import br.com.jpcchaves.application.gateway.todo.DeleteTodoGateway;
 import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
