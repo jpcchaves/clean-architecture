@@ -1,5 +1,7 @@
 package br.com.jpcchaves.infrastructure.controller;
 
+import br.com.jpcchaves.core.domain.PaginatedResponse;
+import br.com.jpcchaves.core.domain.PaginationRequest;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.dto.UpdateTodoStatusDTO;
@@ -26,8 +28,9 @@ public class TodoController {
   }
 
   @GetMapping
-  public ResponseEntity<List<TodoResponseDTO>> list() {
-    return ResponseEntity.ok(todoService.list());
+  public ResponseEntity<PaginatedResponse<TodoResponseDTO>> list(
+      PaginationRequest paginationRequest) {
+    return ResponseEntity.ok(todoService.list(paginationRequest));
   }
 
   @GetMapping("/{id}")
