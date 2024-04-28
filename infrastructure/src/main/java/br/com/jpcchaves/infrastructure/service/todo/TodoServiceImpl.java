@@ -1,6 +1,8 @@
 package br.com.jpcchaves.infrastructure.service.todo;
 
 import br.com.jpcchaves.core.domain.Category;
+import br.com.jpcchaves.core.domain.PaginatedResponse;
+import br.com.jpcchaves.core.domain.PaginationRequest;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
@@ -68,6 +70,19 @@ public class TodoServiceImpl implements TodoService {
   @Transactional(readOnly = true)
   public List<TodoResponseDTO> list() {
     return todoMapper.toResponseDTOList(listTodoUseCase.list());
+  }
+
+  @Override
+  public PaginatedResponse<TodoResponseDTO> list(PaginationRequest paginationRequest) {
+    PaginatedResponse<Todo> todoPaginationRequest = listTodoUseCase.list(paginationRequest);
+
+    return new PaginatedResponse<>(
+        todoMapper.toResponseDTOList(todoPaginationRequest.getContent()),
+        todoPaginationRequest.getPage(),
+        todoPaginationRequest.getSize(),
+        todoPaginationRequest.getTotalElements(),
+        todoPaginationRequest.getTotalPages(),
+        todoPaginationRequest.isLast());
   }
 
   @Override
