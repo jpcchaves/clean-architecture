@@ -1,18 +1,18 @@
 package br.com.jpcchaves.core.domain;
 
 public class PaginationRequest {
-  private int page;
-  private int size;
-  private String sortBy;
-  private String sortOrder;
+  private int page = 0;
+  private int size = 10;
+  private String sort = "";
+  private String direction = "ASC";
 
   public PaginationRequest() {}
 
-  public PaginationRequest(int page, int size, String sortBy, String sortOrder) {
+  public PaginationRequest(int page, int size, String sort, String direction) {
     this.page = page;
     this.size = size;
-    this.sortBy = sortBy;
-    this.sortOrder = sortOrder;
+    this.sort = sort;
+    this.direction = direction;
   }
 
   public int getPage() {
@@ -31,19 +31,19 @@ public class PaginationRequest {
     this.size = size;
   }
 
-  public String getSortBy() {
-    return sortBy;
+  public String getSort() {
+    return sort;
   }
 
-  public void setSortBy(String sortBy) {
-    this.sortBy = sortBy;
+  public void setSort(String sort) {
+    this.sort = sort;
   }
 
-  public String getSortOrder() {
-    return sortOrder;
+  public String getDirection() {
+    return direction;
   }
 
-  public void setSortOrder(String sortOrder) {
-    this.sortOrder = sortOrder;
+  public void setDirection(String direction) {
+    this.direction = direction;
   }
 }
