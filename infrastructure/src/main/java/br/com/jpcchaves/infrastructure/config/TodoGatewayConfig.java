@@ -1,26 +1,8 @@
 package br.com.jpcchaves.infrastructure.config;
 
-import br.com.jpcchaves.application.usecaseimpl.todo.CreateTodoUseCaseImpl;
-import br.com.jpcchaves.application.usecaseimpl.todo.DeleteTodoUseCaseImpl;
-import br.com.jpcchaves.application.usecaseimpl.todo.GetTodoByIdUseCaseImpl;
-import br.com.jpcchaves.application.usecaseimpl.todo.ListTodoUseCaseImpl;
-import br.com.jpcchaves.application.usecaseimpl.todo.ListTodosByCategoryUseCaseImpl;
-import br.com.jpcchaves.application.usecaseimpl.todo.UpdateTodoStatusUseCaseImpl;
-import br.com.jpcchaves.application.usecaseimpl.todo.UpdateTodoUseCaseImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.todo.CreateTodoGatewayImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.todo.DeleteTodoGatewayImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.todo.GetTodoByIdGatewayImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.todo.ListTodoGatewayImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.todo.ListTodosByCategoryGatewayImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.todo.UpdateTodoGatewayImpl;
-import br.com.jpcchaves.infrastructure.gatewayimpl.todo.UpdateTodoStatusGatewayImpl;
-import br.com.jpcchaves.usecase.todo.CreateTodoUseCase;
-import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
-import br.com.jpcchaves.usecase.todo.GetTodoByIdUseCase;
-import br.com.jpcchaves.usecase.todo.ListTodoUseCase;
-import br.com.jpcchaves.usecase.todo.ListTodosByCategoryUseCase;
-import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
-import br.com.jpcchaves.usecase.todo.UpdateTodoUseCase;
+import br.com.jpcchaves.application.usecaseimpl.todo.*;
+import br.com.jpcchaves.infrastructure.gatewayimpl.todo.*;
+import br.com.jpcchaves.usecase.todo.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -60,5 +42,11 @@ public class TodoGatewayConfig {
   ListTodosByCategoryUseCase listByCategory(
       ListTodosByCategoryGatewayImpl listTodosByCategoryGatewayImpl) {
     return new ListTodosByCategoryUseCaseImpl(listTodosByCategoryGatewayImpl);
+  }
+
+  @Bean
+  ListTodoPaginatedUseCase listTodoPaginatedUseCase(
+      ListTodoPaginatedGatewayImpl listTodoPaginatedGatewayImpl) {
+    return new ListTodoPaginatedUseCaseImpl(listTodoPaginatedGatewayImpl);
   }
 }
