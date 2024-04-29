@@ -15,7 +15,7 @@ public enum PaginationDirection {
 
   public static String isValid(String dir) {
     for (PaginationDirection direction : values()) {
-      if (direction.getDirection().equals(dir)) {
+      if (direction.getDirection().equals(dir.toUpperCase())) {
         return direction.getDirection();
       }
     }
