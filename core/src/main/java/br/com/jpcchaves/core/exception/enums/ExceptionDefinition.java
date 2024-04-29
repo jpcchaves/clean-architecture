@@ -9,7 +9,8 @@ public enum ExceptionDefinition {
       "TD-0002",
       HttpStatus.BAD_REQUEST.value()),
   CT0001("The category name is a required field", "CT-0001", HttpStatus.BAD_REQUEST.value()),
-  CT0002("Category not found with the given ID", "CT-0002", HttpStatus.NOT_FOUND.value());
+  CT0002("Category not found with the given ID", "CT-0002", HttpStatus.NOT_FOUND.value()),
+  PG0001("Invalid pagination direction", "PG-0001", HttpStatus.BAD_REQUEST.value());
 
   private String message;
   private String code;
