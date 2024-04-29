@@ -13,7 +13,7 @@ public enum PaginationDirection {
     this.direction = direction;
   }
 
-  public static String fromDir(String dir) {
+  public static String isValid(String dir) {
     for (PaginationDirection direction : values()) {
       if (direction.getDirection().equals(dir)) {
         return direction.getDirection();

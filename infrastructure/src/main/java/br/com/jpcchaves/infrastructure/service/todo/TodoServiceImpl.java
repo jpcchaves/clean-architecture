@@ -71,7 +71,8 @@ public class TodoServiceImpl implements TodoService {
 
   @Override
   public PaginatedResponse<TodoResponseDTO> list(PaginationRequest paginationRequest) {
-    PaginatedResponse<Todo> todoPaginationRequest = listTodoPaginatedUseCase.list(paginationRequest);
+    PaginatedResponse<Todo> todoPaginationRequest =
+        listTodoPaginatedUseCase.list(paginationRequest);
 
     return new PaginatedResponse<>(
         todoMapper.toResponseDTOList(todoPaginationRequest.getContent()),

@@ -1,12 +1,15 @@
 package br.com.jpcchaves.infrastructure.utils;
 
 import br.com.jpcchaves.core.domain.PaginationRequest;
+import br.com.jpcchaves.core.domain.enums.PaginationDirection;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 public class PaginationUtils {
   public static Pageable convertToPageable(PaginationRequest paginationRequest) {
+    PaginationDirection.isValid(paginationRequest.getDirection());
+
     Sort sort = null;
 
     if (paginationRequest.getSort() != null && !paginationRequest.getSort().isEmpty()) {
