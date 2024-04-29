@@ -46,7 +46,6 @@ public class PaginationRequest {
   }
 
   public void setDirection(String direction) {
-    final String normalizedDirection = direction.toUpperCase();
-    this.direction = PaginationDirection.fromDir(normalizedDirection);
+    this.direction = direction.toUpperCase();
   }
 }
