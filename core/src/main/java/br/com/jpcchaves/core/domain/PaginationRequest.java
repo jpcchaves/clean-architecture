@@ -1,10 +1,12 @@
 package br.com.jpcchaves.core.domain;
 
+import br.com.jpcchaves.core.domain.enums.PaginationDirection;
+
 public class PaginationRequest {
   private int page = 0;
   private int size = 10;
   private String sort = "";
-  private String direction = "ASC";
+  private String direction = PaginationDirection.ASC.getDirection();
 
   public PaginationRequest() {}
 
@@ -44,6 +46,7 @@ public class PaginationRequest {
   }
 
   public void setDirection(String direction) {
-    this.direction = direction;
+    final String normalizedDirection = direction.toUpperCase();
+    this.direction = PaginationDirection.fromDir(normalizedDirection);
   }
 }
