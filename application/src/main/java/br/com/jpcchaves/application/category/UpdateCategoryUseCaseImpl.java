@@ -1,6 +1,6 @@
-package br.com.jpcchaves.application.usecaseimpl.category;
+package br.com.jpcchaves.application.category;
 
-import br.com.jpcchaves.application.gateway.category.UpdateCategoryGateway;
+import br.com.jpcchaves.application.category.UpdateCategoryGateway;
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.usecase.category.UpdateCategoryUseCase;
 

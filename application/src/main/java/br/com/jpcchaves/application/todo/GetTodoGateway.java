@@ -1,4 +1,4 @@
-package br.com.jpcchaves.application.gateway.todo;
+package br.com.jpcchaves.application.todo;
 
 import br.com.jpcchaves.core.domain.Todo;
 

@@ -1,6 +1,6 @@
-package br.com.jpcchaves.application.usecaseimpl.todo;
+package br.com.jpcchaves.application.todo;
 
-import br.com.jpcchaves.application.gateway.todo.ListTodosByCategoryGateway;
+import br.com.jpcchaves.application.todo.ListTodosByCategoryGateway;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.usecase.todo.ListTodosByCategoryUseCase;
 import java.util.List;
