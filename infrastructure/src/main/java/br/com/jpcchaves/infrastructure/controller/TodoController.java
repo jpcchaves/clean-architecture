@@ -59,7 +59,7 @@ public class TodoController implements ITodoResource {
   public ResponseEntity<?> updateStatus(
       @PathVariable(name = "id") Long id, @RequestBody @Valid UpdateTodoStatusDTO requestDTO) {
     todoService.updateStatus(id, requestDTO.getStatus());
-    return ResponseEntity.ok(HttpStatus.NO_CONTENT);
+    return ResponseEntity.noContent().build();
   }
 
   @GetMapping("/by-category")
