@@ -98,6 +98,10 @@ public class Todo extends Audited {
   }
 
   public void setCategory(Category category) {
+    if (Objects.isNull(category)) {
+      throw new TodoException(ExceptionDefinition.TD0002);
+    }
+
     this.category = category;
   }
 

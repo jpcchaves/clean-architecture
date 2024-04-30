@@ -1,19 +1,15 @@
 package br.com.jpcchaves.infrastructure.service.todo;
 
 import br.com.jpcchaves.core.domain.Category;
+import br.com.jpcchaves.core.domain.PaginatedResponse;
+import br.com.jpcchaves.core.domain.PaginationRequest;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.usecase.category.GetCategoryByIdUseCase;
-import br.com.jpcchaves.usecase.todo.CreateTodoUseCase;
-import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
-import br.com.jpcchaves.usecase.todo.GetTodoByIdUseCase;
-import br.com.jpcchaves.usecase.todo.ListTodoUseCase;
-import br.com.jpcchaves.usecase.todo.ListTodosByCategoryUseCase;
-import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
-import br.com.jpcchaves.usecase.todo.UpdateTodoUseCase;
+import br.com.jpcchaves.usecase.todo.*;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TodoServiceImpl implements TodoService {
   private final CreateTodoUseCase createTodoUseCase;
   private final ListTodoUseCase listTodoUseCase;
+  private final ListTodoPaginatedUseCase listTodoPaginatedUseCase;
   private final GetTodoByIdUseCase getTodoByIdUseCase;
   private final DeleteTodoUseCase deleteTodoUseCase;
   private final UpdateTodoUseCase updateTodoUseCase;
@@ -33,6 +30,7 @@ public class TodoServiceImpl implements TodoService {
   public TodoServiceImpl(
       CreateTodoUseCase createTodoUseCase,
       ListTodoUseCase listTodoUseCase,
+      ListTodoPaginatedUseCase listTodoPaginatedUseCase,
       GetTodoByIdUseCase getTodoByIdUseCase,
       DeleteTodoUseCase deleteTodoUseCase,
       UpdateTodoUseCase updateTodoUseCase,
@@ -42,6 +40,7 @@ public class TodoServiceImpl implements TodoService {
       ListTodosByCategoryUseCase listTodosByCategoryUseCase) {
     this.createTodoUseCase = createTodoUseCase;
     this.listTodoUseCase = listTodoUseCase;
+    this.listTodoPaginatedUseCase = listTodoPaginatedUseCase;
     this.getTodoByIdUseCase = getTodoByIdUseCase;
     this.deleteTodoUseCase = deleteTodoUseCase;
     this.updateTodoUseCase = updateTodoUseCase;
@@ -68,6 +67,20 @@ public class TodoServiceImpl implements TodoService {
   @Transactional(readOnly = true)
   public List<TodoResponseDTO> list() {
     return todoMapper.toResponseDTOList(listTodoUseCase.list());
+  }
+
+  @Override
+  public PaginatedResponse<TodoResponseDTO> list(PaginationRequest paginationRequest) {
+    PaginatedResponse<Todo> todoPaginationRequest =
+        listTodoPaginatedUseCase.list(paginationRequest);
+
+    return new PaginatedResponse<>(
+        todoMapper.toResponseDTOList(todoPaginationRequest.getContent()),
+        todoPaginationRequest.getPage(),
+        todoPaginationRequest.getSize(),
+        todoPaginationRequest.getTotalElements(),
+        todoPaginationRequest.getTotalPages(),
+        todoPaginationRequest.isLast());
   }
 
   @Override

@@ -1,6 +1,6 @@
 package br.com.jpcchaves.infrastructure.gatewayimpl.category;
 
-import br.com.jpcchaves.application.gateway.category.GetCategoryByIdGateway;
+import br.com.jpcchaves.application.category.GetCategoryByIdGateway;
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.core.exception.CategoryException;
 import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;

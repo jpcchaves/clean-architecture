@@ -1,5 +1,7 @@
 package br.com.jpcchaves.infrastructure.service.todo;
 
+import br.com.jpcchaves.core.domain.PaginatedResponse;
+import br.com.jpcchaves.core.domain.PaginationRequest;
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
@@ -9,6 +11,8 @@ public interface TodoService {
   TodoResponseDTO create(TodoRequestDTO request);
 
   List<TodoResponseDTO> list();
+
+  PaginatedResponse<TodoResponseDTO> list(PaginationRequest paginationRequest);
 
   TodoResponseDTO getById(Long id);
 

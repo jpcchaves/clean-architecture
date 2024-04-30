@@ -1,6 +1,6 @@
 package br.com.jpcchaves.infrastructure.gatewayimpl.category;
 
-import br.com.jpcchaves.application.gateway.category.DeleteCategoryGateway;
+import br.com.jpcchaves.application.category.DeleteCategoryGateway;
 import br.com.jpcchaves.core.exception.CategoryException;
 import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
