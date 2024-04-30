@@ -1,12 +1,12 @@
 package br.com.jpcchaves.infrastructure.controller.resources;
 
+import br.com.jpcchaves.application.resources.CreateResource;
+import br.com.jpcchaves.application.resources.DeleteResource;
+import br.com.jpcchaves.application.resources.GetByIdResource;
+import br.com.jpcchaves.application.resources.ListResourcePaginated;
+import br.com.jpcchaves.application.resources.UpdateResource;
 import br.com.jpcchaves.core.domain.PaginatedResponse;
 import br.com.jpcchaves.core.domain.PaginationRequest;
-import br.com.jpcchaves.infrastructure.controller.resources.base.CreateResource;
-import br.com.jpcchaves.infrastructure.controller.resources.base.DeleteResource;
-import br.com.jpcchaves.infrastructure.controller.resources.base.GetByIdResource;
-import br.com.jpcchaves.infrastructure.controller.resources.base.ListResourcePaginated;
-import br.com.jpcchaves.infrastructure.controller.resources.base.UpdateResource;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
 import org.springframework.http.ResponseEntity;
