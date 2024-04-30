@@ -2,6 +2,7 @@ package br.com.jpcchaves.infrastructure.controller;
 
 import br.com.jpcchaves.core.domain.PaginatedResponse;
 import br.com.jpcchaves.core.domain.PaginationRequest;
+import br.com.jpcchaves.infrastructure.controller.resources.ITodoResource;
 import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.dto.UpdateTodoStatusDTO;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/todos")
-public class TodoController {
+public class TodoController implements ITodoResource {
   private final TodoService todoService;
 
   public TodoController(TodoService todoService) {
@@ -23,38 +24,42 @@ public class TodoController {
   }
 
   @PostMapping
-  public ResponseEntity<TodoResponseDTO> create(@RequestBody @Valid TodoRequestDTO todo) {
-    return ResponseEntity.status(HttpStatus.OK).body(todoService.create(todo));
+  @Override
+  public ResponseEntity<TodoResponseDTO> create(@RequestBody @Valid TodoRequestDTO request) {
+    return ResponseEntity.status(HttpStatus.CREATED).body(todoService.create(request));
   }
 
   @GetMapping
+  @Override
   public ResponseEntity<PaginatedResponse<TodoResponseDTO>> list(
       PaginationRequest paginationRequest) {
     return ResponseEntity.ok(todoService.list(paginationRequest));
   }
 
   @GetMapping("/{id}")
+  @Override
   public ResponseEntity<TodoResponseDTO> getById(@PathVariable(name = "id") Long id) {
     return ResponseEntity.ok(todoService.getById(id));
   }
 
-  @DeleteMapping("/{id}")
-  public ResponseEntity<?> delete(@PathVariable(name = "id") Long id) {
-    todoService.delete(id);
-    return ResponseEntity.noContent().build();
-  }
-
   @PutMapping("/{id}")
+  @Override
   public ResponseEntity<TodoResponseDTO> update(
       @PathVariable(name = "id") Long id, @RequestBody @Valid TodoRequestDTO todoEntity) {
     return ResponseEntity.ok(todoService.update(id, todoEntity));
+  }
+
+  @Override
+  public ResponseEntity<Void> deleteById(Long id) {
+    todoService.delete(id);
+    return ResponseEntity.noContent().build();
   }
 
   @PatchMapping("/{id}")
   public ResponseEntity<?> updateStatus(
       @PathVariable(name = "id") Long id, @RequestBody @Valid UpdateTodoStatusDTO requestDTO) {
     todoService.updateStatus(id, requestDTO.getStatus());
-    return ResponseEntity.noContent().build();
+    return ResponseEntity.ok(HttpStatus.NO_CONTENT);
   }
 
   @GetMapping("/by-category")
