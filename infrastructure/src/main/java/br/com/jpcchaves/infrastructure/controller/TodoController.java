@@ -3,9 +3,9 @@ package br.com.jpcchaves.infrastructure.controller;
 import br.com.jpcchaves.core.domain.PaginatedResponse;
 import br.com.jpcchaves.core.domain.PaginationRequest;
 import br.com.jpcchaves.infrastructure.controller.resources.ITodoResource;
-import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
-import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
-import br.com.jpcchaves.infrastructure.dto.UpdateTodoStatusDTO;
+import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
+import br.com.jpcchaves.infrastructure.dto.todo.UpdateTodoStatusDTO;
 import br.com.jpcchaves.infrastructure.service.todo.TodoService;
 import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
@@ -59,7 +59,7 @@ public class TodoController implements ITodoResource {
   public ResponseEntity<?> updateStatus(
       @PathVariable(name = "id") Long id, @RequestBody @Valid UpdateTodoStatusDTO requestDTO) {
     todoService.updateStatus(id, requestDTO.getStatus());
-    return ResponseEntity.ok(HttpStatus.NO_CONTENT);
+    return ResponseEntity.noContent().build();
   }
 
   @GetMapping("/by-category")

@@ -1,7 +1,7 @@
 package br.com.jpcchaves.infrastructure.controller;
 
-import br.com.jpcchaves.infrastructure.dto.CategoryRequestDTO;
-import br.com.jpcchaves.infrastructure.dto.CategoryResponseDTO;
+import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.category.CategoryResponseDTO;
 import br.com.jpcchaves.infrastructure.service.category.CategoryService;
 import java.util.List;
 import org.springframework.http.HttpStatus;

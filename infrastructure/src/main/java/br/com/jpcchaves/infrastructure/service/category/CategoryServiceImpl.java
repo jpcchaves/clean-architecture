@@ -1,8 +1,8 @@
 package br.com.jpcchaves.infrastructure.service.category;
 
 import br.com.jpcchaves.core.domain.Category;
-import br.com.jpcchaves.infrastructure.dto.CategoryRequestDTO;
-import br.com.jpcchaves.infrastructure.dto.CategoryResponseDTO;
+import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.category.CategoryResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.CategoryMapper;
 import br.com.jpcchaves.usecase.category.CreateCategoryUseCase;
 import br.com.jpcchaves.usecase.category.DeleteCategoryUseCase;

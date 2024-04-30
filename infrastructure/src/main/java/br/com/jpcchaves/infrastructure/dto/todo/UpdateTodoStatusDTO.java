@@ -1,4 +1,4 @@
-package br.com.jpcchaves.infrastructure.dto;
+package br.com.jpcchaves.infrastructure.dto.todo;
 
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
 

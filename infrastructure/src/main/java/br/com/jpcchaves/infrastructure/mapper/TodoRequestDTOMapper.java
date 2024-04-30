@@ -1,7 +1,7 @@
 package br.com.jpcchaves.infrastructure.mapper;
 
 import br.com.jpcchaves.core.domain.Todo;
-import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import org.modelmapper.PropertyMap;
 
 public class TodoRequestDTOMapper extends PropertyMap<TodoRequestDTO, Todo> {

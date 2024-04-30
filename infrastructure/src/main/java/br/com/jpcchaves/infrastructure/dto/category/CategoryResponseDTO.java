@@ -1,4 +1,4 @@
-package br.com.jpcchaves.infrastructure.dto;
+package br.com.jpcchaves.infrastructure.dto.category;
 
 public class CategoryResponseDTO {
   private Long id;

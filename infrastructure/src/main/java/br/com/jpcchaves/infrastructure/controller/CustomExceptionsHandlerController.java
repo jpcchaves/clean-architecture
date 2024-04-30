@@ -3,7 +3,7 @@ package br.com.jpcchaves.infrastructure.controller;
 import br.com.jpcchaves.core.exception.CategoryException;
 import br.com.jpcchaves.core.exception.PaginationException;
 import br.com.jpcchaves.core.exception.TodoException;
-import br.com.jpcchaves.infrastructure.dto.ExceptionResponseDTO;
+import br.com.jpcchaves.infrastructure.dto.exception.ExceptionResponseDTO;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
