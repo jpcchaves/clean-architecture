@@ -7,8 +7,8 @@ import br.com.jpcchaves.infrastructure.controller.resources.base.DeleteResource;
 import br.com.jpcchaves.infrastructure.controller.resources.base.GetByIdResource;
 import br.com.jpcchaves.infrastructure.controller.resources.base.ListResourcePaginated;
 import br.com.jpcchaves.infrastructure.controller.resources.base.UpdateResource;
-import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
-import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
+import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
 import org.springframework.http.ResponseEntity;
 
 public interface ITodoResource

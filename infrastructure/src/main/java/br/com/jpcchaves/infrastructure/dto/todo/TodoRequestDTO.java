@@ -1,4 +1,4 @@
-package br.com.jpcchaves.infrastructure.dto;
+package br.com.jpcchaves.infrastructure.dto.todo;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

@@ -1,8 +1,8 @@
 package br.com.jpcchaves.infrastructure.mapper;
 
 import br.com.jpcchaves.core.domain.Todo;
-import br.com.jpcchaves.infrastructure.dto.TodoRequestDTO;
-import br.com.jpcchaves.infrastructure.dto.TodoResponseDTO;
+import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.utils.MapperUtils;
 import java.util.List;

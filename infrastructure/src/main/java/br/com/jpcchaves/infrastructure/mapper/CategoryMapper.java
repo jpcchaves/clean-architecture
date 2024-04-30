@@ -1,8 +1,8 @@
 package br.com.jpcchaves.infrastructure.mapper;
 
 import br.com.jpcchaves.core.domain.Category;
-import br.com.jpcchaves.infrastructure.dto.CategoryRequestDTO;
-import br.com.jpcchaves.infrastructure.dto.CategoryResponseDTO;
+import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.category.CategoryResponseDTO;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
 import br.com.jpcchaves.infrastructure.utils.MapperUtils;
 import java.util.List;
