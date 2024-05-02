@@ -4,39 +4,21 @@ import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryResponseDTO;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
-import br.com.jpcchaves.infrastructure.utils.MapperUtils;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CategoryMapper {
-  private final MapperUtils mapperUtils;
+public interface CategoryMapper {
 
-  public CategoryMapper(MapperUtils mapperUtils) {
-    this.mapperUtils = mapperUtils;
-  }
+  Category toCoreCategory(CategoryEntity createdCategory);
 
-  public Category toCoreCategory(CategoryEntity createdCategory) {
-    return mapperUtils.parseObject(createdCategory, Category.class);
-  }
+  Category toCoreCategory(CategoryRequestDTO categoryRequestDTO);
 
-  public Category toCoreCategory(CategoryRequestDTO categoryRequestDTO) {
-    return mapperUtils.parseObject(categoryRequestDTO, Category.class);
-  }
+  CategoryEntity toCategoryEntity(Category category);
 
-  public CategoryEntity toCategoryEntity(Category category) {
-    return mapperUtils.parseObject(category, CategoryEntity.class);
-  }
+  CategoryResponseDTO toDto(Category category);
 
-  public CategoryResponseDTO toDto(Category category) {
-    return mapperUtils.parseObject(category, CategoryResponseDTO.class);
-  }
+  List<Category> toCoreCategoryList(List<CategoryEntity> categoryEntityList);
 
-  public List<Category> toCoreCategoryList(List<CategoryEntity> categoryEntityList) {
-    return mapperUtils.parseObjectsCollection(categoryEntityList, Category.class);
-  }
-
-  public List<CategoryResponseDTO> toCategoryResDTOList(List<Category> categoryList) {
-    return mapperUtils.parseObjectsCollection(categoryList, CategoryResponseDTO.class);
-  }
+  List<CategoryResponseDTO> toCategoryResDTOList(List<Category> categoryList);
 }
