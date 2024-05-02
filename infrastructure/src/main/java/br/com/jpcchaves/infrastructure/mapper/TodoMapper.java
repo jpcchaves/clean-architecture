@@ -4,51 +4,24 @@ import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
-import br.com.jpcchaves.infrastructure.utils.MapperUtils;
 import java.util.List;
-import org.springframework.stereotype.Component;
 
-@Component
-public class TodoMapper {
-  private final MapperUtils mapperUtils;
+public interface TodoMapper {
+  Todo toTodo(TodoEntity todoEntity);
 
-  public TodoMapper(MapperUtils mapperUtils) {
-    this.mapperUtils = mapperUtils;
-  }
+  Todo toTodo(TodoRequestDTO todoDTO);
 
-  public Todo toTodo(TodoEntity todoEntity) {
-    return mapperUtils.parseObject(todoEntity, Todo.class);
-  }
+  TodoEntity toTodoEntity(Todo todo);
 
-  public Todo toTodo(TodoRequestDTO todoDTO) {
-    return mapperUtils.parseObject(todoDTO, Todo.class);
-  }
+  List<Todo> toTodoList(List<TodoEntity> todoEntityList);
 
-  public TodoEntity toTodoEntity(Todo todo) {
-    return mapperUtils.parseObject(todo, TodoEntity.class);
-  }
+  List<TodoEntity> toTodoEntityList(List<Todo> todos);
 
-  public List<Todo> toTodoList(List<TodoEntity> todoEntityList) {
-    return mapperUtils.parseObjectsCollection(todoEntityList, Todo.class);
-  }
+  TodoResponseDTO toResponseDTO(TodoEntity todoEntity);
 
-  public List<TodoEntity> toTodoEntityList(List<Todo> todos) {
-    return mapperUtils.parseObjectsCollection(todos, TodoEntity.class);
-  }
+  TodoResponseDTO toResponseDTO(Todo todo);
 
-  public TodoResponseDTO toResponseDTO(TodoEntity todoEntity) {
-    return mapperUtils.parseObject(todoEntity, TodoResponseDTO.class);
-  }
+  List<TodoResponseDTO> toResponseDTOList(List<Todo> todoList);
 
-  public TodoResponseDTO toResponseDTO(Todo todo) {
-    return mapperUtils.parseObject(todo, TodoResponseDTO.class);
-  }
-
-  public List<TodoResponseDTO> toResponseDTOList(List<Todo> todoList) {
-    return mapperUtils.parseObjectsCollection(todoList, TodoResponseDTO.class);
-  }
-
-  public List<TodoResponseDTO> toResponseDTO(List<Todo> todosList) {
-    return mapperUtils.parseObjectsCollection(todosList, TodoResponseDTO.class);
-  }
+  List<TodoResponseDTO> toResponseDTO(List<Todo> todosList);
 }
