@@ -1,6 +1,6 @@
-package br.com.jpcchaves.application.todo;
+package br.com.jpcchaves.application.todo.usecase;
 
-import br.com.jpcchaves.application.todo.DeleteTodoGateway;
+import br.com.jpcchaves.application.todo.gateway.DeleteTodoGateway;
 import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
 
 public class DeleteTodoUseCaseImpl implements DeleteTodoUseCase {

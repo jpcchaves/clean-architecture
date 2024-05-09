@@ -1,6 +1,6 @@
 package br.com.jpcchaves.infrastructure.gatewayimpl.todo;
 
-import br.com.jpcchaves.application.todo.UpdateTodoStatusGateway;
+import br.com.jpcchaves.application.todo.gateway.UpdateTodoStatusGateway;
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.core.exception.TodoException;
 import br.com.jpcchaves.core.exception.enums.ExceptionDefinition;

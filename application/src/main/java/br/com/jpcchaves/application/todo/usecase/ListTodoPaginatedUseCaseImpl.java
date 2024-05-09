@@ -1,6 +1,6 @@
-package br.com.jpcchaves.application.todo;
+package br.com.jpcchaves.application.todo.usecase;
 
-import br.com.jpcchaves.application.todo.ListTodoPaginatedGateway;
+import br.com.jpcchaves.application.todo.gateway.ListTodoPaginatedGateway;
 import br.com.jpcchaves.core.domain.PaginatedResponse;
 import br.com.jpcchaves.core.domain.PaginationRequest;
 import br.com.jpcchaves.core.domain.Todo;

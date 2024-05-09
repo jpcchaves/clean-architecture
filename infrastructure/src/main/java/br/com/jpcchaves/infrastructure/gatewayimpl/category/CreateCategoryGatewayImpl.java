@@ -1,6 +1,6 @@
 package br.com.jpcchaves.infrastructure.gatewayimpl.category;
 
-import br.com.jpcchaves.application.category.CreateCategoryGateway;
+import br.com.jpcchaves.application.category.gateway.CreateCategoryGateway;
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.infrastructure.mapper.CategoryMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;

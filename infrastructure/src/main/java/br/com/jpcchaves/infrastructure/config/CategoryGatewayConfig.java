@@ -1,10 +1,10 @@
 package br.com.jpcchaves.infrastructure.config;
 
-import br.com.jpcchaves.application.category.CreateCategoryUseCaseImpl;
-import br.com.jpcchaves.application.category.DeleteCategoryUseCaseImpl;
-import br.com.jpcchaves.application.category.GetCategoryByIdUseCaseImpl;
-import br.com.jpcchaves.application.category.ListCategoriesUseCaseImpl;
-import br.com.jpcchaves.application.category.UpdateCategoryUseCaseImpl;
+import br.com.jpcchaves.application.category.usecase.CreateCategoryUseCaseImpl;
+import br.com.jpcchaves.application.category.usecase.DeleteCategoryUseCaseImpl;
+import br.com.jpcchaves.application.category.usecase.GetCategoryByIdUseCaseImpl;
+import br.com.jpcchaves.application.category.usecase.ListCategoriesUseCaseImpl;
+import br.com.jpcchaves.application.category.usecase.UpdateCategoryUseCaseImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.category.CreateCategoryGatewayImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.category.DeleteCategoryGatewayImpl;
 import br.com.jpcchaves.infrastructure.gatewayimpl.category.GetCategoryByIdGatewayImpl;
