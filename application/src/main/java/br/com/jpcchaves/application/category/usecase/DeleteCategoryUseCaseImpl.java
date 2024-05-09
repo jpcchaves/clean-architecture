@@ -1,6 +1,6 @@
-package br.com.jpcchaves.application.category;
+package br.com.jpcchaves.application.category.usecase;
 
-import br.com.jpcchaves.application.category.DeleteCategoryGateway;
+import br.com.jpcchaves.application.category.gateway.DeleteCategoryGateway;
 import br.com.jpcchaves.usecase.category.DeleteCategoryUseCase;
 
 public class DeleteCategoryUseCaseImpl implements DeleteCategoryUseCase {

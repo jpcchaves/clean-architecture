@@ -1,6 +1,6 @@
-package br.com.jpcchaves.application.todo;
+package br.com.jpcchaves.application.todo.usecase;
 
-import br.com.jpcchaves.application.todo.UpdateTodoStatusGateway;
+import br.com.jpcchaves.application.todo.gateway.UpdateTodoStatusGateway;
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
 
