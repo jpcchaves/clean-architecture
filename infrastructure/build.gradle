@@ -19,7 +19,8 @@ dependencies {
     implementation 'org.postgresql:postgresql'
 
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.2.0'
-
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.5.Final'
+    
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     runtimeOnly 'com.h2database:h2'
