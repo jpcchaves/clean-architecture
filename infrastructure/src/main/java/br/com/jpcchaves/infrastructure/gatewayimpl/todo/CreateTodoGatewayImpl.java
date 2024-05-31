@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class CreateTodoGatewayImpl implements CreateTodoGateway {
+
   @Qualifier("${deploy.repo}")
   private final ITodoRepository<TodoEntity, Long> todoRepository;
 
@@ -25,7 +26,8 @@ public class CreateTodoGatewayImpl implements CreateTodoGateway {
   @Override
   @Transactional
   public Todo create(Todo todo) {
-    TodoEntity createdTodo = todoRepository.save(todoMapper.toTodoEntity(todo));
+    TodoEntity todoEntity = todoMapper.toTodoEntity(todo);
+    TodoEntity createdTodo = todoRepository.save(todoEntity);
 
     return todoMapper.toTodo(createdTodo);
   }

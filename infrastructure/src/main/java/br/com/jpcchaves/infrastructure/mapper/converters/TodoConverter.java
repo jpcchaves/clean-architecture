@@ -19,16 +19,13 @@ public interface TodoConverter {
   Todo toTodo(TodoEntity todoEntity);
 
   @Mappings({
-      @Mapping(target = "createdAt", ignore = true),
-      @Mapping(target = "category", ignore = true),
-      @Mapping(target = "createdBy", ignore = true),
-      @Mapping(target = "modifiedBy", ignore = true),
-      @Mapping(target = "status", ignore = true),
-      @Mapping(target = "updatedAt", ignore = true),
       @Mapping(target = "id", ignore = true)
   })
   Todo toTodo(TodoRequestDTO todoDTO);
 
+  @Mappings({
+      @Mapping(target = "id", ignore = true)
+  })
   TodoEntity toTodoEntity(Todo todo);
 
   List<Todo> toTodoList(List<TodoEntity> todoEntityList);
