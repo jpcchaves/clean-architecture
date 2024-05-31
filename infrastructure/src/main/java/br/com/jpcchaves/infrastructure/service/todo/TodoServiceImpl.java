@@ -9,13 +9,21 @@ import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
 import br.com.jpcchaves.usecase.category.GetCategoryByIdUseCase;
-import br.com.jpcchaves.usecase.todo.*;
+import br.com.jpcchaves.usecase.todo.CreateTodoUseCase;
+import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;
+import br.com.jpcchaves.usecase.todo.GetTodoByIdUseCase;
+import br.com.jpcchaves.usecase.todo.ListTodoPaginatedUseCase;
+import br.com.jpcchaves.usecase.todo.ListTodoUseCase;
+import br.com.jpcchaves.usecase.todo.ListTodosByCategoryUseCase;
+import br.com.jpcchaves.usecase.todo.UpdateTodoStatusUseCase;
+import br.com.jpcchaves.usecase.todo.UpdateTodoUseCase;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TodoServiceImpl implements TodoService {
+
   private final CreateTodoUseCase createTodoUseCase;
   private final ListTodoUseCase listTodoUseCase;
   private final ListTodoPaginatedUseCase listTodoPaginatedUseCase;
@@ -51,7 +59,6 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  @Transactional
   public TodoResponseDTO create(TodoRequestDTO requestDTO) {
     Category category = getCategoryByIdUseCase.getById(requestDTO.getCategoryId());
 

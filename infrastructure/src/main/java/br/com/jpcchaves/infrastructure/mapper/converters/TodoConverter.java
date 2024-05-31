@@ -1,0 +1,67 @@
+package br.com.jpcchaves.infrastructure.mapper.converters;
+
+import br.com.jpcchaves.core.domain.Category;
+import br.com.jpcchaves.core.domain.Todo;
+import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
+import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
+import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
+import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
+import java.util.List;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.Named;
+
+@Mapper(componentModel = "spring")
+public interface TodoConverter {
+
+  @Mapping(target = "category", ignore = true)
+  Todo toTodo(TodoEntity todoEntity);
+
+  @Mappings({
+      @Mapping(target = "createdAt", ignore = true),
+      @Mapping(target = "category", ignore = true),
+      @Mapping(target = "createdBy", ignore = true),
+      @Mapping(target = "modifiedBy", ignore = true),
+      @Mapping(target = "status", ignore = true),
+      @Mapping(target = "updatedAt", ignore = true),
+      @Mapping(target = "id", ignore = true)
+  })
+  Todo toTodo(TodoRequestDTO todoDTO);
+
+  TodoEntity toTodoEntity(Todo todo);
+
+  List<Todo> toTodoList(List<TodoEntity> todoEntityList);
+
+  List<TodoEntity> toTodoEntityList(List<Todo> todos);
+
+  @Mapping(
+      target = "category",
+      source = "category",
+      qualifiedByName = "categoryToString"
+  )
+  TodoResponseDTO toResponseDTO(TodoEntity todoEntity);
+
+  @Mapping(
+      target = "category",
+      source = "category",
+      qualifiedByName = "categoryToString"
+  )
+  TodoResponseDTO toResponseDTO(Todo todo);
+
+  List<TodoResponseDTO> toResponseDTOList(List<Todo> todoList);
+
+  List<TodoResponseDTO> toResponseDTO(List<Todo> todosList);
+
+  @Named("categoryToString")
+  @Mapping(target = "todoList", ignore = true)
+  default String categoryToString(Category category) {
+    return category.getName();
+  }
+
+  @Named("categoryToString")
+  @Mapping(target = "todoList", ignore = true)
+  default String categoryToString(CategoryEntity category) {
+    return category.getName();
+  }
+}
