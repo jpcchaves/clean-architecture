@@ -9,23 +9,17 @@ import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring", uses = {CategoryConverter.class})
 public interface TodoConverter {
 
-  @Mapping(target = "category", ignore = true)
   Todo toTodo(TodoEntity todoEntity);
 
-  @Mappings({
-      @Mapping(target = "id", ignore = true)
-  })
+  @Mapping(target = "category", ignore = true)
+  @Mapping(target = "id", ignore = true)
   Todo toTodo(TodoRequestDTO todoDTO);
 
-  @Mappings({
-      @Mapping(target = "id", ignore = true)
-  })
   TodoEntity toTodoEntity(Todo todo);
 
   List<Todo> toTodoList(List<TodoEntity> todoEntityList);
