@@ -19,7 +19,12 @@ dependencies {
     implementation 'org.postgresql:postgresql'
 
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.2.0'
+
+    implementation group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.5.5.Final'
     implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.5.Final'
+    implementation group: 'org.mapstruct.extensions.spring', name: 'mapstruct-spring-extensions', version: '1.1.1'
+
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
