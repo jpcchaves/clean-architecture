@@ -5,8 +5,11 @@ import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface TodoMapper {
+
   Todo toTodo(TodoEntity todoEntity);
 
   Todo toTodo(TodoRequestDTO todoDTO);

@@ -8,7 +8,9 @@ import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.utils.MapperUtils;
 import java.util.List;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Component;
 
+@Component
 @ConditionalOnProperty(value = "deploy.mapper", havingValue = "modelmapper")
 public class TodoMapperModelMapperImpl implements TodoMapper {
 

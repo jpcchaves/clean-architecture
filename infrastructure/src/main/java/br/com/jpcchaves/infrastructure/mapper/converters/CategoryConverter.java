@@ -8,7 +8,9 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants.ComponentModel;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
+@ConditionalOnProperty(value = "deploy.mapper", havingValue = "mapstruct")
 @Mapper(componentModel = ComponentModel.SPRING)
 public interface CategoryConverter {
 
