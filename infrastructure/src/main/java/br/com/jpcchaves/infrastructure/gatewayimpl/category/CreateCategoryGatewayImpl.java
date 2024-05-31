@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CreateCategoryGatewayImpl implements CreateCategoryGateway {
+
   @Qualifier("${deploy.repo}")
   private final ICategoryRepository<CategoryEntity, Long> repository;
 
@@ -23,7 +24,8 @@ public class CreateCategoryGatewayImpl implements CreateCategoryGateway {
 
   @Override
   public Category create(Category category) {
-    CategoryEntity createdCategory = repository.save(categoryMapper.toCategoryEntity(category));
+    CategoryEntity entity = categoryMapper.toCategoryEntity(category);
+    CategoryEntity createdCategory = repository.save(entity);
 
     return categoryMapper.toCoreCategory(createdCategory);
   }
