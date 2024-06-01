@@ -3,18 +3,20 @@ package br.com.jpcchaves.infrastructure.mapper.impl;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
-import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
+import br.com.jpcchaves.infrastructure.mapper.contracts.ITodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.utils.MapperUtils;
 import java.util.List;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TodoMapperModelMapperImpl implements TodoMapper {
+@ConditionalOnProperty(value = "deploy.mapper", havingValue = "modelmapper")
+public class ITodoMapperModelMapperImpl implements ITodoMapper {
 
   private final MapperUtils mapperUtils;
 
-  public TodoMapperModelMapperImpl(MapperUtils mapperUtils) {
+  public ITodoMapperModelMapperImpl(MapperUtils mapperUtils) {
     this.mapperUtils = mapperUtils;
   }
 

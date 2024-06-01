@@ -3,6 +3,7 @@ package br.com.jpcchaves.infrastructure.controller;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryResponseDTO;
 import br.com.jpcchaves.infrastructure.service.category.CategoryService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,8 @@ public class CategoryController {
   }
 
   @PostMapping
-  public ResponseEntity<CategoryResponseDTO> create(@RequestBody CategoryRequestDTO requestDTO) {
+  public ResponseEntity<CategoryResponseDTO> create(
+      @RequestBody @Valid CategoryRequestDTO requestDTO) {
     return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.create(requestDTO));
   }
 

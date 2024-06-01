@@ -3,7 +3,7 @@ package br.com.jpcchaves.infrastructure.service.category;
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryResponseDTO;
-import br.com.jpcchaves.infrastructure.mapper.CategoryMapper;
+import br.com.jpcchaves.infrastructure.mapper.contracts.ICategoryMapper;
 import br.com.jpcchaves.usecase.category.CreateCategoryUseCase;
 import br.com.jpcchaves.usecase.category.DeleteCategoryUseCase;
 import br.com.jpcchaves.usecase.category.GetCategoryByIdUseCase;
@@ -20,7 +20,7 @@ public class CategoryServiceImpl implements CategoryService {
   private final GetCategoryByIdUseCase getCategoryByIdUseCase;
   private final UpdateCategoryUseCase updateCategoryUseCase;
   private final DeleteCategoryUseCase deleteCategoryUseCase;
-  private final CategoryMapper categoryMapper;
+  private final ICategoryMapper categoryMapper;
 
   public CategoryServiceImpl(
       CreateCategoryUseCase createCategoryUseCase,
@@ -28,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService {
       GetCategoryByIdUseCase getCategoryByIdUseCase,
       UpdateCategoryUseCase updateCategoryUseCase,
       DeleteCategoryUseCase deleteCategoryUseCase,
-      CategoryMapper categoryMapper) {
+      ICategoryMapper categoryMapper) {
     this.createCategoryUseCase = createCategoryUseCase;
     this.listCategoriesUseCase = listCategoriesUseCase;
     this.getCategoryByIdUseCase = getCategoryByIdUseCase;
