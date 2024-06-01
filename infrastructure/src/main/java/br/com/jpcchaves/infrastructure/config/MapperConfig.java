@@ -1,5 +1,6 @@
 package br.com.jpcchaves.infrastructure.config;
 
+import br.com.jpcchaves.infrastructure.mapper.CategoryEntityMapper;
 import br.com.jpcchaves.infrastructure.mapper.TodoRequestDTOMapper;
 import br.com.jpcchaves.infrastructure.mapper.TodoResponseDTOMapper;
 import org.modelmapper.ModelMapper;
@@ -17,6 +18,7 @@ public class MapperConfig {
 
     modelMapper.addMappings(new TodoRequestDTOMapper());
     modelMapper.addMappings(new TodoResponseDTOMapper());
+    modelMapper.addMappings(new CategoryEntityMapper());
 
     return modelMapper;
   }

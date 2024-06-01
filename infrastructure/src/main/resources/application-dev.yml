@@ -17,4 +17,4 @@ spring:
         format_sql: true
 deploy:
   repo: jpa
-  mapper: mapstruct
+  mapper: modelmapper
