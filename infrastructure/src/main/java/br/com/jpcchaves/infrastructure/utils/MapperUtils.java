@@ -4,10 +4,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConditionalOnProperty(value = "deploy.mapper", havingValue = "modelmapper")
 public class MapperUtils {
+
   private final ModelMapper mapper;
 
   public MapperUtils(ModelMapper mapper) {

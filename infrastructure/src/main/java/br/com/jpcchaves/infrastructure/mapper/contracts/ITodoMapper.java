@@ -1,12 +1,15 @@
-package br.com.jpcchaves.infrastructure.mapper;
+package br.com.jpcchaves.infrastructure.mapper.contracts;
 
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
-public interface TodoMapper {
+@Component
+public interface ITodoMapper {
+
   Todo toTodo(TodoEntity todoEntity);
 
   Todo toTodo(TodoRequestDTO todoDTO);
