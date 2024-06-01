@@ -1,4 +1,4 @@
-package br.com.jpcchaves.infrastructure.mapper.converters;
+package br.com.jpcchaves.infrastructure.mapper;
 
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.core.domain.Todo;
@@ -13,7 +13,9 @@ import org.mapstruct.Named;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 @ConditionalOnProperty(value = "deploy.mapper", havingValue = "mapstruct")
-@Mapper(componentModel = "spring", uses = {CategoryConverter.class})
+@Mapper(
+    componentModel = "spring",
+    uses = {CategoryConverter.class})
 public interface TodoConverter {
 
   Todo toTodo(TodoEntity todoEntity);
@@ -28,18 +30,10 @@ public interface TodoConverter {
 
   List<TodoEntity> toTodoEntityList(List<Todo> todos);
 
-  @Mapping(
-      target = "category",
-      source = "category",
-      qualifiedByName = "categoryToString"
-  )
+  @Mapping(target = "category", source = "category", qualifiedByName = "categoryToString")
   TodoResponseDTO toResponseDTO(TodoEntity todoEntity);
 
-  @Mapping(
-      target = "category",
-      source = "category",
-      qualifiedByName = "categoryToString"
-  )
+  @Mapping(target = "category", source = "category", qualifiedByName = "categoryToString")
   TodoResponseDTO toResponseDTO(Todo todo);
 
   List<TodoResponseDTO> toResponseDTOList(List<Todo> todoList);

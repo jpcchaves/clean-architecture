@@ -1,4 +1,4 @@
-package br.com.jpcchaves.infrastructure.mapper.converters;
+package br.com.jpcchaves.infrastructure.mapper;
 
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
