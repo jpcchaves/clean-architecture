@@ -6,7 +6,9 @@ import java.time.LocalDateTime;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "todos")
+@Table(
+    name = "todos",
+    indexes = {@Index(name = "idx_created_at", columnList = "createdAt")})
 @EntityListeners(AuditingEntityListener.class)
 public class TodoEntity extends AuditedEntity {
   @Id
