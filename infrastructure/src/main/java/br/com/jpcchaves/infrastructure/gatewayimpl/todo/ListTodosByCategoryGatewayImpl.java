@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListTodosByCategoryGatewayImpl implements ListTodosByCategoryGateway {
 
-  @Qualifier("${deploy.repo}")
+  @Qualifier("${application.config.libraries.repo}")
   private final ITodoRepository<TodoEntity, Long> todoRepository;
 
   private final ITodoMapper todoMapper;

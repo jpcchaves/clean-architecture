@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(value = "deploy.mapper", havingValue = "modelmapper")
+@ConditionalOnProperty(value = "application.config.libraries.mapper", havingValue = "modelmapper")
 public class ICategoryMapperModelMapperImpl implements ICategoryMapper {
 
   private final MapperUtils mapperUtils;

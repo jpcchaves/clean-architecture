@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(value = "deploy.mapper", havingValue = "modelmapper")
+@ConditionalOnProperty(value = "application.config.libraries.mapper", havingValue = "modelmapper")
 public class MapperConfig {
 
   @Bean

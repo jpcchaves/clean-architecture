@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DeleteCategoryGatewayImpl implements DeleteCategoryGateway {
 
-  @Qualifier("${deploy.repo}")
+  @Qualifier("${application.config.libraries.repo}")
   private final ICategoryRepository<CategoryEntity, Long> repository;
 
   public DeleteCategoryGatewayImpl(ICategoryRepository<CategoryEntity, Long> repository) {

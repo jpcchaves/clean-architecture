@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@ConditionalOnProperty(value = "deploy.repo", havingValue = "in-memo")
+@ConditionalOnProperty(value = "application.config.libraries.repo", havingValue = "in-memo")
 public class InMemoryRepository implements IRepository<TodoEntity, Long> {
   private Map<Long, TodoEntity> data = new HashMap<>();
 

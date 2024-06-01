@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class DeleteTodoGatewayImpl implements DeleteTodoGateway {
-  @Qualifier("${deploy.repo}")
+  @Qualifier("${application.config.libraries.repo}")
   private final ITodoRepository<TodoEntity, Long> todoRepository;
 
   public DeleteTodoGatewayImpl(ITodoRepository<TodoEntity, Long> todoRepository) {
