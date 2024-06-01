@@ -1,4 +1,4 @@
-package br.com.jpcchaves.infrastructure.mapper;
+package br.com.jpcchaves.infrastructure.mapper.contracts;
 
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface CategoryMapper {
+public interface ICategoryMapper {
 
   Category toCoreCategory(CategoryEntity createdCategory);
 

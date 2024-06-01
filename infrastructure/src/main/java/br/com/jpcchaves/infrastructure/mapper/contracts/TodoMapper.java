@@ -1,4 +1,4 @@
-package br.com.jpcchaves.infrastructure.mapper;
+package br.com.jpcchaves.infrastructure.mapper.contracts;
 
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;

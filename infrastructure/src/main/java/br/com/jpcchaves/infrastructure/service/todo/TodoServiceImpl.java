@@ -7,7 +7,7 @@ import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.core.domain.enums.TodoStatus;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
-import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
+import br.com.jpcchaves.infrastructure.mapper.contracts.TodoMapper;
 import br.com.jpcchaves.usecase.category.GetCategoryByIdUseCase;
 import br.com.jpcchaves.usecase.todo.CreateTodoUseCase;
 import br.com.jpcchaves.usecase.todo.DeleteTodoUseCase;

@@ -3,7 +3,7 @@ package br.com.jpcchaves.infrastructure.mapper.impl;
 import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryResponseDTO;
-import br.com.jpcchaves.infrastructure.mapper.CategoryMapper;
+import br.com.jpcchaves.infrastructure.mapper.contracts.ICategoryMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
 import br.com.jpcchaves.infrastructure.utils.MapperUtils;
 import java.util.List;
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConditionalOnProperty(value = "deploy.mapper", havingValue = "modelmapper")
-public class CategoryMapperModelMapperImpl implements CategoryMapper {
+public class ICategoryMapperModelMapperImpl implements ICategoryMapper {
 
   private final MapperUtils mapperUtils;
 
-  public CategoryMapperModelMapperImpl(MapperUtils mapperUtils) {
+  public ICategoryMapperModelMapperImpl(MapperUtils mapperUtils) {
     this.mapperUtils = mapperUtils;
   }
 

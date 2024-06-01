@@ -4,7 +4,7 @@ import br.com.jpcchaves.application.todo.gateway.ListTodoPaginatedGateway;
 import br.com.jpcchaves.core.domain.PaginatedResponse;
 import br.com.jpcchaves.core.domain.PaginationRequest;
 import br.com.jpcchaves.core.domain.Todo;
-import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
+import br.com.jpcchaves.infrastructure.mapper.contracts.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.ITodoRepository;
 import br.com.jpcchaves.infrastructure.utils.PaginationUtils;

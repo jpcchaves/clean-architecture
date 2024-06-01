@@ -4,7 +4,7 @@ import br.com.jpcchaves.core.domain.Category;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.category.CategoryResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.CategoryConverter;
-import br.com.jpcchaves.infrastructure.mapper.CategoryMapper;
+import br.com.jpcchaves.infrastructure.mapper.contracts.ICategoryMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
 import java.util.List;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConditionalOnProperty(value = "deploy.mapper", havingValue = "mapstruct")
-public class CategoryMapStructMapperImpl implements CategoryMapper {
+public class ICategoryMapStructMapperImpl implements ICategoryMapper {
 
   private final CategoryConverter categoryConverter;
 
-  public CategoryMapStructMapperImpl(CategoryConverter categoryConverter) {
+  public ICategoryMapStructMapperImpl(CategoryConverter categoryConverter) {
     this.categoryConverter = categoryConverter;
   }
 

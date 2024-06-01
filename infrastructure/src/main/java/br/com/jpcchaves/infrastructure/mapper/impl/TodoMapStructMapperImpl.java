@@ -4,7 +4,7 @@ import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
 import br.com.jpcchaves.infrastructure.mapper.TodoConverter;
-import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
+import br.com.jpcchaves.infrastructure.mapper.contracts.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import java.util.List;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

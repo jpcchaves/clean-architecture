@@ -2,7 +2,7 @@ package br.com.jpcchaves.infrastructure.gatewayimpl.todo;
 
 import br.com.jpcchaves.application.todo.gateway.CreateTodoGateway;
 import br.com.jpcchaves.core.domain.Todo;
-import br.com.jpcchaves.infrastructure.mapper.TodoMapper;
+import br.com.jpcchaves.infrastructure.mapper.contracts.TodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.ITodoRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
