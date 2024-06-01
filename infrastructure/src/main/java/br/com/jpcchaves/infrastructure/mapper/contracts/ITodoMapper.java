@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface TodoMapper {
+public interface ITodoMapper {
 
   Todo toTodo(TodoEntity todoEntity);
 

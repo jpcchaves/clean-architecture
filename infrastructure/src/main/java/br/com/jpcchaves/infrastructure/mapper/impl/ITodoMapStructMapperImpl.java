@@ -3,56 +3,65 @@ package br.com.jpcchaves.infrastructure.mapper.impl;
 import br.com.jpcchaves.core.domain.Todo;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoRequestDTO;
 import br.com.jpcchaves.infrastructure.dto.todo.TodoResponseDTO;
-import br.com.jpcchaves.infrastructure.mapper.contracts.TodoMapper;
+import br.com.jpcchaves.infrastructure.mapper.TodoConverter;
+import br.com.jpcchaves.infrastructure.mapper.contracts.ITodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
-import br.com.jpcchaves.infrastructure.utils.MapperUtils;
 import java.util.List;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(value = "deploy.mapper", havingValue = "modelmapper")
-public class TodoMapperModelMapperImpl implements TodoMapper {
+@ConditionalOnProperty(value = "deploy.mapper", havingValue = "mapstruct")
+public class ITodoMapStructMapperImpl implements ITodoMapper {
 
-  private final MapperUtils mapperUtils;
+  private final TodoConverter todoConverter;
 
-  public TodoMapperModelMapperImpl(MapperUtils mapperUtils) {
-    this.mapperUtils = mapperUtils;
+  public ITodoMapStructMapperImpl(TodoConverter todoConverter) {
+    this.todoConverter = todoConverter;
   }
 
+  @Override
   public Todo toTodo(TodoEntity todoEntity) {
-    return mapperUtils.parseObject(todoEntity, Todo.class);
+    return todoConverter.toTodo(todoEntity);
   }
 
+  @Override
   public Todo toTodo(TodoRequestDTO todoDTO) {
-    return mapperUtils.parseObject(todoDTO, Todo.class);
+    return todoConverter.toTodo(todoDTO);
   }
 
+  @Override
   public TodoEntity toTodoEntity(Todo todo) {
-    return mapperUtils.parseObject(todo, TodoEntity.class);
+    return todoConverter.toTodoEntity(todo);
   }
 
+  @Override
   public List<Todo> toTodoList(List<TodoEntity> todoEntityList) {
-    return mapperUtils.parseObjectsCollection(todoEntityList, Todo.class);
+    return todoConverter.toTodoList(todoEntityList);
   }
 
+  @Override
   public List<TodoEntity> toTodoEntityList(List<Todo> todos) {
-    return mapperUtils.parseObjectsCollection(todos, TodoEntity.class);
+    return null;
   }
 
+  @Override
   public TodoResponseDTO toResponseDTO(TodoEntity todoEntity) {
-    return mapperUtils.parseObject(todoEntity, TodoResponseDTO.class);
+    return null;
   }
 
+  @Override
   public TodoResponseDTO toResponseDTO(Todo todo) {
-    return mapperUtils.parseObject(todo, TodoResponseDTO.class);
+    return todoConverter.toResponseDTO(todo);
   }
 
+  @Override
   public List<TodoResponseDTO> toResponseDTOList(List<Todo> todoList) {
-    return mapperUtils.parseObjectsCollection(todoList, TodoResponseDTO.class);
+    return todoConverter.toResponseDTO(todoList);
   }
 
+  @Override
   public List<TodoResponseDTO> toResponseDTO(List<Todo> todosList) {
-    return mapperUtils.parseObjectsCollection(todosList, TodoResponseDTO.class);
+    return todoConverter.toResponseDTOList(todosList);
   }
 }
