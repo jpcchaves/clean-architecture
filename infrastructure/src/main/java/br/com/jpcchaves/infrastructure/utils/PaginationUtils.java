@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 public class PaginationUtils {
+
+  // TODO: 6/3/24 Create a custom annotation using Spring AOP to handle the pagination
   public static Pageable convertToPageable(PaginationRequest paginationRequest) {
     PaginationDirection.isValid(paginationRequest.getDirection());
 
