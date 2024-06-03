@@ -9,6 +9,7 @@ import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
@@ -20,8 +21,15 @@ public interface TodoConverter {
 
   Todo toTodo(TodoEntity todoEntity);
 
-  @Mapping(target = "category", ignore = true)
-  @Mapping(target = "id", ignore = true)
+  @Mappings({
+      @Mapping(target = "category", ignore = true),
+      @Mapping(target = "id", ignore = true),
+      @Mapping(target = "createdAt", ignore = true),
+      @Mapping(target = "createdBy", ignore = true),
+      @Mapping(target = "modifiedBy", ignore = true),
+      @Mapping(target = "status", ignore = true),
+      @Mapping(target = "updatedAt", ignore = true)
+  })
   Todo toTodo(TodoRequestDTO todoDTO);
 
   TodoEntity toTodoEntity(Todo todo);
