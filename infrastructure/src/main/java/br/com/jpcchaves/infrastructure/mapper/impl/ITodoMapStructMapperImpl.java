@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(value = "deploy.mapper", havingValue = "mapstruct")
+@ConditionalOnProperty(value = "application.config.libraries.mapper", havingValue = "mapstruct")
 public class ITodoMapStructMapperImpl implements ITodoMapper {
 
   private final TodoConverter todoConverter;

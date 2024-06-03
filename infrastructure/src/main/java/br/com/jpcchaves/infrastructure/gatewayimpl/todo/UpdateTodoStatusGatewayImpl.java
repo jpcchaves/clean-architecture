@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UpdateTodoStatusGatewayImpl implements UpdateTodoStatusGateway {
-  @Qualifier("${deploy.repo}")
+  @Qualifier("${application.config.libraries.repo}")
   private final ITodoRepository<TodoEntity, Long> todoRepository;
 
   public UpdateTodoStatusGatewayImpl(ITodoRepository<TodoEntity, Long> todoRepository) {

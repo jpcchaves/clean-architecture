@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class GetTodoByIdGatewayImpl implements GetTodoGateway {
-  @Qualifier("${deploy.repo}")
+  @Qualifier("${application.config.libraries.repo}")
   private final ITodoRepository<TodoEntity, Long> todoRepository;
 
   private final ITodoMapper todoMapper;

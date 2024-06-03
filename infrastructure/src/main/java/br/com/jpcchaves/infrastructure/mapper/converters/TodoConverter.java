@@ -12,7 +12,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
-@ConditionalOnProperty(value = "deploy.mapper", havingValue = "mapstruct")
+@ConditionalOnProperty(value = "application.config.libraries.mapper", havingValue = "mapstruct")
 @Mapper(
     componentModel = "spring",
     uses = {CategoryConverter.class})

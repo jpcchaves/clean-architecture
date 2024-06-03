@@ -1,6 +1,6 @@
 package br.com.jpcchaves.infrastructure.persistence.repository;
 
-import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
+import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,29 +13,29 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@ConditionalOnProperty(value = "deploy.repo", havingValue = "in-memo")
-public class InMemoryRepository implements IRepository<TodoEntity, Long> {
-  private Map<Long, TodoEntity> data = new HashMap<>();
+@ConditionalOnProperty(value = "application.config.libraries.repo", havingValue = "in-memo")
+public class InMemoryCategoryRepository implements ICategoryRepository<CategoryEntity, Long> {
+  private Map<Long, CategoryEntity> data = new HashMap<>();
 
   @Override
-  public TodoEntity save(TodoEntity entity) {
-    data.put(entity.getId(), entity);
+  public CategoryEntity save(CategoryEntity entity) {
+    data.put(1L, entity);
     return entity;
   }
 
   @Override
-  public Optional<TodoEntity> findById(Long id) {
+  public Optional<CategoryEntity> findById(Long id) {
     return Optional.ofNullable(data.get(id));
   }
 
   @Override
-  public List<TodoEntity> findAll() {
+  public List<CategoryEntity> findAll() {
     return new ArrayList<>(data.values());
   }
 
   @Override
-  public Page<TodoEntity> findAll(Pageable pageable) {
-    return null;
+  public Page<CategoryEntity> findAll(Pageable pageable) {
+    return Page.empty();
   }
 
   @Override

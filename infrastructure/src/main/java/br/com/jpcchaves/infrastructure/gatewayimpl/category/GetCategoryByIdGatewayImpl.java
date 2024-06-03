@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GetCategoryByIdGatewayImpl implements GetCategoryByIdGateway {
 
-  @Qualifier("${deploy.repo}")
+  @Qualifier("${application.config.libraries.repo}")
   private final ICategoryRepository<CategoryEntity, Long> repository;
 
   private final ICategoryMapper categoryMapper;
