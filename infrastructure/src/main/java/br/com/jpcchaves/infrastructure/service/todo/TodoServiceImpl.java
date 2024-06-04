@@ -60,7 +60,8 @@ public class TodoServiceImpl implements TodoService {
 
   @Override
   public TodoResponseDTO create(TodoRequestDTO requestDTO) {
-    Category category = getCategoryByIdUseCase.getById(requestDTO.getCategoryId());
+    Category category = getCategoryByIdUseCase.getById(
+        requestDTO.getCategoryId());
 
     Todo coreTodo = todoMapper.toTodo(requestDTO);
     coreTodo.setCategory(category);
@@ -77,17 +78,20 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public PaginatedResponse<TodoResponseDTO> list(PaginationRequest paginationRequest) {
+  public PaginatedResponse<TodoResponseDTO> list(
+      PaginationRequest paginationRequest) {
     PaginatedResponse<Todo> todoPaginationRequest =
         listTodoPaginatedUseCase.list(paginationRequest);
 
-    return new PaginatedResponse<>(
-        todoMapper.toResponseDTOList(todoPaginationRequest.getContent()),
-        todoPaginationRequest.getPage(),
-        todoPaginationRequest.getSize(),
-        todoPaginationRequest.getTotalElements(),
-        todoPaginationRequest.getTotalPages(),
-        todoPaginationRequest.isLast());
+    return new PaginatedResponse.Builder<TodoResponseDTO>()
+        .setContent(
+            todoMapper.toResponseDTOList(todoPaginationRequest.getContent()))
+        .setPage(todoPaginationRequest.getPage())
+        .setSize(todoPaginationRequest.getSize())
+        .setTotalElements(todoPaginationRequest.getTotalElements())
+        .setTotalPages(todoPaginationRequest.getTotalPages())
+        .isLast(todoPaginationRequest.isLast())
+        .build();
   }
 
   @Override
@@ -107,7 +111,8 @@ public class TodoServiceImpl implements TodoService {
   @Override
   @Transactional
   public TodoResponseDTO update(Long id, TodoRequestDTO requestDTO) {
-    Category category = getCategoryByIdUseCase.getById(requestDTO.getCategoryId());
+    Category category = getCategoryByIdUseCase.getById(
+        requestDTO.getCategoryId());
     Todo todo = getTodoByIdUseCase.getById(id);
 
     todo.setTodo(requestDTO.getTodo());
@@ -127,7 +132,8 @@ public class TodoServiceImpl implements TodoService {
   @Override
   @Transactional(readOnly = true)
   public List<TodoResponseDTO> listByCategory(Long categoryId) {
-    List<Todo> todosList = listTodosByCategoryUseCase.listByCategory(categoryId);
+    List<Todo> todosList = listTodosByCategoryUseCase.listByCategory(
+        categoryId);
     return todoMapper.toResponseDTO(todosList);
   }
 }
