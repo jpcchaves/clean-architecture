@@ -8,7 +8,6 @@ import br.com.jpcchaves.infrastructure.mapper.contracts.ITodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.ITodoRepository;
 import br.com.jpcchaves.infrastructure.utils.pagination.PaginationUtils;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListTodoPaginatedGatewayImpl implements ListTodoPaginatedGateway {
 
-  @Qualifier("${application.config.libraries.repo}")
   private final ITodoRepository<TodoEntity, Long> todoRepository;
 
   private final ITodoMapper todoMapper;

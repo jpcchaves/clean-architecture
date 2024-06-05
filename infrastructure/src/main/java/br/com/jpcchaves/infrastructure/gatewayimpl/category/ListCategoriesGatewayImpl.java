@@ -6,18 +6,17 @@ import br.com.jpcchaves.infrastructure.mapper.contracts.ICategoryMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.CategoryEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.ICategoryRepository;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ListCategoriesGatewayImpl implements ListCategoriesGateway {
-  @Qualifier("${application.config.libraries.repo}")
-  private final ICategoryRepository<CategoryEntity, Long> repository;
 
+  private final ICategoryRepository<CategoryEntity, Long> repository;
   private final ICategoryMapper categoryMapper;
 
   public ListCategoriesGatewayImpl(
-      ICategoryRepository<CategoryEntity, Long> repository, ICategoryMapper categoryMapper) {
+      ICategoryRepository<CategoryEntity, Long> repository,
+      ICategoryMapper categoryMapper) {
     this.repository = repository;
     this.categoryMapper = categoryMapper;
   }

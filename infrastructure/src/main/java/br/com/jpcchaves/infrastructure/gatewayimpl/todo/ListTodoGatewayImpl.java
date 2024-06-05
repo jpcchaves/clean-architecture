@@ -6,19 +6,18 @@ import br.com.jpcchaves.infrastructure.mapper.contracts.ITodoMapper;
 import br.com.jpcchaves.infrastructure.persistence.entity.TodoEntity;
 import br.com.jpcchaves.infrastructure.persistence.repository.ITodoRepository;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class ListTodoGatewayImpl implements ListTodoGateway {
-  @Qualifier("${application.config.libraries.repo}")
+
   private final ITodoRepository<TodoEntity, Long> todoRepository;
-
   private final ITodoMapper todoMapper;
-
+  
   public ListTodoGatewayImpl(
-      ITodoRepository<TodoEntity, Long> todoRepository, ITodoMapper todoMapper) {
+      ITodoRepository<TodoEntity, Long> todoRepository,
+      ITodoMapper todoMapper) {
     this.todoRepository = todoRepository;
     this.todoMapper = todoMapper;
   }
