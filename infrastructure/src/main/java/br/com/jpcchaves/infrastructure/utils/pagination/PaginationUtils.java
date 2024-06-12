@@ -20,21 +20,22 @@ public class PaginationUtils implements ConvertToPageable {
 
     String[] sortParts = sortProperty.split(",");
 
-    Sort.Direction direction = Sort.Direction.ASC;
+    Sort.Direction sortDirection = Sort.Direction.ASC;
 
     if (sortParts.length > 1) {
+      String directionPart = sortParts[1];
 
-      direction = Sort.Direction.fromString(sortParts[1]);
+      sortDirection = Sort.Direction.fromString(directionPart);
 
       sortProperty = sortParts[0];
 
     } else if (paginationRequest.getDirection() != null &&
         paginationRequest.getDirection().equalsIgnoreCase(DESCENDING)) {
 
-      direction = Sort.Direction.DESC;
+      sortDirection = Sort.Direction.DESC;
     }
 
-    sort = Sort.by(direction, sortProperty);
+    sort = Sort.by(sortDirection, sortProperty);
 
     return PageRequest.of(paginationRequest.getPage(),
         paginationRequest.getSize(), sort);
