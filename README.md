@@ -15,7 +15,7 @@ This layer segregation ensures that business rules govern the system, with techn
 
 For this implementation, I chose the following Java Modules:
 
-1. **Core Module**: Housing all the business rules, domain entities, and exceptions, this module forms the heart of the application. By keeping it independent of other modules, the business logic remains decoupled and reusable.
+1. **Core Module**: Housing all the business rules along with validations, domain entities, and exceptions, this module forms the heart of the application. By keeping it independent of other modules, the business logic remains decoupled and reusable.
 2. **Usecase Module**: This module implements application-specific use cases. Its separation from the core business logic ensures that use case changes do not directly impact the domain logic. It acts as an intermediary between the Core module and the outer layers, providing a business operations interface.
 3. **Application Module**: This module focuses on use case implementation and gateway interface definition. Our approach breaks down into:
     1. **Use Case Implementation**: We encapsulate the business logic by implementing concrete use case classes that correspond to the interfaces defined in the Use Case Module. This ensures each use case is precisely defined and isolated from infrastructure concerns.
